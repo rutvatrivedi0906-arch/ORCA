@@ -22,7 +22,7 @@ class RoleSelectionScreen extends StatelessWidget {
         break;
 
       case 'RESEARCHER':
-        destination = const ResearcherLoginScreen();
+        destination = ResearcherLoginScreen(selectedLanguage: selectedLanguage);
         break;
 
       case 'AUTHORITY':
