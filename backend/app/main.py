@@ -3,11 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from fastapi import Depends
-
+from app.api.routes.fisherman import router as fisherman_router
 from app.api.dependencies import require_roles
 from app.models.user import User
 from app.database import engine
 from app.api.routes.auth import router as auth_router
+from app.api.routes.marine import router as marine_router
+from app.api.routes.gis import router as gis_router
 app = FastAPI(
     title="ORCA Marine Intelligence API",
     description=(
@@ -16,7 +18,9 @@ app = FastAPI(
     version="0.1.0",
 )
 app.include_router(auth_router)
-
+app.include_router(fisherman_router)
+app.include_router(marine_router)
+app.include_router(gis_router)
 # Development CORS configuration.
 # We will tighten this when the web dashboard is deployed.
 app.add_middleware(

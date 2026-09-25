@@ -2,13 +2,86 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/app_theme.dart';
 import '../../models/user_role.dart';
+import '../../data/orca_l10n.dart';
+import '../../services/fisherman_service.dart';
+import '../../services/session_service.dart';
 import '../../widgets/feature_card.dart';
 import '../../widgets/marine_status_card.dart';
+import '../profile/fisherman_profile_screen.dart';
+import '../marine/sea_conditions_screen.dart';
+import '../splash_screen.dart';
+import '../vessel/vessel_form_screen.dart';
+import '../vessel/vessel_list_screen.dart';
+import '../gis/boundary_guardian_screen.dart';
+import '../gis/plan_trip_screen.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   final UserRole role;
 
   const DashboardScreen({super.key, required this.role});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  bool checkingVessels = false;
+  bool hasVessel = true;
+  bool hideVesselPrompt = false;
+  String lang = 'en';
+
+  UserRole get role => widget.role;
+
+  String tr(String key) => OrcaL10n.t(lang, key);
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLanguage();
+    if (role == UserRole.fisherman) {
+      _refreshVessels();
+    }
+  }
+
+  Future<void> _loadLanguage() async {
+    final cached = await SessionService.getPreferredLanguage();
+
+    String resolved = cached ?? 'en';
+
+    if (role == UserRole.fisherman) {
+      try {
+        final profile = await FishermanService.getProfile();
+        resolved = profile.preferredLanguage;
+        await SessionService.setPreferredLanguage(resolved);
+      } catch (_) {
+        // Cached language remains usable offline.
+      }
+    }
+
+    if (mounted) {
+      setState(() {
+        lang = OrcaL10n.codeFromSelection(resolved);
+      });
+    }
+  }
+
+  Future<void> _refreshVessels() async {
+    if (!mounted) return;
+    setState(() => checkingVessels = true);
+
+    try {
+      final vessels = await FishermanService.getVessels();
+      if (!mounted) return;
+      setState(() {
+        hasVessel = vessels.isNotEmpty;
+        if (hasVessel) hideVesselPrompt = false;
+      });
+    } catch (_) {
+      // Do not block the offline-first dashboard if the API is unavailable.
+    } finally {
+      if (mounted) setState(() => checkingVessels = false);
+    }
+  }
 
   void comingSoon(BuildContext context, String feature) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -21,159 +94,156 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
+  Future<void> _logout(BuildContext context) async {
+    final yes = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(tr('logout_title')),
+        content: Text(tr('logout_desc')),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: Text(tr('cancel')),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: AppTheme.danger),
+            onPressed: () => Navigator.pop(dialogContext, true),
+            child: Text(tr('logout')),
+          ),
+        ],
+      ),
+    );
+
+    if (yes != true) return;
+
+    await SessionService.clear();
+    if (!context.mounted) return;
+
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const SplashScreen()),
+      (_) => false,
+    );
+  }
+
+  Future<void> _openProfile() async {
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const FishermanProfileScreen()));
+    if (mounted) {
+      await _loadLanguage();
+      await _refreshVessels();
+    }
+  }
+
+  Future<void> _openVessels() async {
+    await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const VesselListScreen()));
+    if (mounted) await _refreshVessels();
+  }
+
+  Future<void> _setupBoat() async {
+    final changed = await Navigator.of(
+      context,
+    ).push<bool>(MaterialPageRoute(builder: (_) => const VesselFormScreen()));
+    if (changed == true && mounted) {
+      await _refreshVessels();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     switch (role) {
       case UserRole.fisherman:
-        return _buildFishermanDashboard(context);
-
+        return _fisherman(context);
       case UserRole.researcher:
-        return _buildResearcherDashboard(context);
-
+        return _researcher(context);
       case UserRole.authority:
-        return _buildAuthorityDashboard(context);
-
+        return _authority(context);
       case UserRole.admin:
-        return _buildAdminDashboard(context);
+        return _admin(context);
     }
   }
 
-  Widget _buildFishermanDashboard(BuildContext context) {
+  Widget _fisherman(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF4F8FA),
       body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 18, 20, 120),
-          children: [
-            _topBar(
-              title: 'Good morning',
-              subtitle: 'Ready for your next marine mission?',
-            ),
-
-            const SizedBox(height: 22),
-
-            const MarineStatusCard(),
-
-            const SizedBox(height: 26),
-
-            _sectionTitle('Ask ORCA', 'Your marine intelligence assistant'),
-
-            const SizedBox(height: 12),
-
-            InkWell(
-              borderRadius: BorderRadius.circular(24),
-              onTap: () => comingSoon(context, 'ORCA Assistant'),
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: AppTheme.navy,
-                  borderRadius: BorderRadius.circular(24),
+        child: RefreshIndicator(
+          onRefresh: _refreshVessels,
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(20, 16, 20, 124),
+            children: [
+              _topBar(
+                context,
+                title: tr('good_morning'),
+                subtitle: tr('ready_mission'),
+              ),
+              const SizedBox(height: 18),
+              _hero(),
+              const SizedBox(height: 18),
+              const MarineStatusCard(),
+              if (!checkingVessels && !hasVessel && !hideVesselPrompt) ...[
+                const SizedBox(height: 18),
+                _boatSetupCard(),
+              ],
+              const SizedBox(height: 26),
+              _sectionTitle(tr('ask_orca'), tr('assistant_sub')),
+              const SizedBox(height: 12),
+              _assistantCard(context),
+              const SizedBox(height: 28),
+              _sectionTitle(tr('mission_tools'), tr('mission_tools_sub')),
+              const SizedBox(height: 12),
+              _quickGrid(context, [
+                _QuickAction(
+                  tr('plan_trip'),
+                  Icons.route_rounded,
+                  AppTheme.oceanBlue,
+                  actionId: 'plan_trip',
                 ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 58,
-                      height: 58,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.10),
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      child: const Icon(
-                        Icons.mic_rounded,
-                        color: Colors.white,
-                        size: 28,
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    const Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Ask anything about the sea',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'Weather, route, safety, tides or marine conditions.',
-                            style: TextStyle(
-                              color: Colors.white60,
-                              fontSize: 12.5,
-                              height: 1.3,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Icon(
-                      Icons.arrow_forward_rounded,
-                      color: Colors.white70,
-                    ),
-                  ],
+                _QuickAction(
+                  tr('sea_conditions'),
+                  Icons.water_rounded,
+                  AppTheme.cyan,
+                  actionId: 'sea_conditions',
                 ),
+                _QuickAction(
+                  tr('alerts'),
+                  Icons.warning_amber_rounded,
+                  AppTheme.warning,
+                ),
+                _QuickAction(
+                  tr('offline_mission'),
+                  Icons.offline_pin_rounded,
+                  Color(0xFF6C63FF),
+                ),
+              ]),
+              const SizedBox(height: 28),
+              _sectionTitle(tr('safety'), tr('safety_sub')),
+              const SizedBox(height: 12),
+              FeatureCard(
+                title: tr('boundary_guardian'),
+                subtitle: tr('boundary_desc'),
+                icon: Icons.public_rounded,
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const BoundaryGuardianScreen(),
+                    ),
+                  );
+                },
               ),
-            ),
-
-            const SizedBox(height: 28),
-
-            _sectionTitle('Mission tools', 'Plan and operate your trip'),
-
-            const SizedBox(height: 12),
-
-            _quickGrid(context, [
-              _QuickAction(
-                'Plan Trip',
-                Icons.route_rounded,
-                AppTheme.oceanBlue,
+              const SizedBox(height: 12),
+              FeatureCard(
+                title: tr('mission_simulation'),
+                subtitle: tr('simulation_desc'),
+                icon: Icons.timeline_rounded,
+                onTap: () => comingSoon(context, 'Mission Simulation'),
               ),
-              _QuickAction(
-                'Sea Conditions',
-                Icons.water_rounded,
-                AppTheme.cyan,
-              ),
-              _QuickAction(
-                'Alerts',
-                Icons.warning_amber_rounded,
-                AppTheme.warning,
-              ),
-              _QuickAction(
-                'Offline Mission',
-                Icons.offline_pin_rounded,
-                const Color(0xFF6C63FF),
-              ),
-            ]),
-
-            const SizedBox(height: 28),
-
-            _sectionTitle('Safety', 'Operational protection and boundaries'),
-
-            const SizedBox(height: 12),
-
-            FeatureCard(
-              title: 'Boundary Guardian',
-              subtitle: 'Monitor restricted zones and maritime boundaries.',
-              icon: Icons.public_rounded,
-              onTap: () => comingSoon(context, 'Boundary Guardian'),
-            ),
-
-            const SizedBox(height: 12),
-
-            FeatureCard(
-              title: 'Mission Simulation',
-              subtitle:
-                  'Preview changing conditions across your trip timeline.',
-              icon: Icons.timeline_rounded,
-              onTap: () => comingSoon(context, 'Mission Simulation'),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SizedBox(
@@ -182,12 +252,12 @@ class DashboardScreen extends StatelessWidget {
           child: FloatingActionButton.extended(
             backgroundColor: AppTheme.danger,
             foregroundColor: Colors.white,
-            elevation: 2,
+            elevation: 3,
             onPressed: () => comingSoon(context, 'Emergency SOS'),
             icon: const Icon(Icons.sos_rounded, size: 28),
-            label: const Text(
-              'EMERGENCY SOS',
-              style: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.7),
+            label: Text(
+              tr('emergency_sos'),
+              style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 0.7),
             ),
           ),
         ),
@@ -195,10 +265,160 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildResearcherDashboard(BuildContext context) {
+  Widget _hero() {
+    return Container(
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [AppTheme.navy, Color(0xFF0B6681)],
+        ),
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Row(
+        children: [
+          const Icon(Icons.sailing_rounded, color: Colors.white, size: 34),
+          SizedBox(width: 15),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  tr('offline_copilot'),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  tr('offline_copilot_desc'),
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12.5,
+                    height: 1.35,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _boatSetupCard() {
+    return Container(
+      padding: const EdgeInsets.all(19),
+      decoration: BoxDecoration(
+        color: const Color(0xFFEAF7F4),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppTheme.cyan.withValues(alpha: 0.28)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.directions_boat_filled_rounded,
+                color: AppTheme.oceanBlue,
+              ),
+              SizedBox(width: 10),
+              Text(
+                tr('setup_boat'),
+                style: TextStyle(
+                  color: AppTheme.navy,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 9),
+          Text(
+            tr('setup_boat_desc'),
+            style: TextStyle(
+              color: Color(0xFF5E747D),
+              fontSize: 13,
+              height: 1.45,
+            ),
+          ),
+          const SizedBox(height: 15),
+          Row(
+            children: [
+              Expanded(
+                child: FilledButton(
+                  onPressed: _setupBoat,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: AppTheme.navy,
+                    minimumSize: const Size.fromHeight(48),
+                  ),
+                  child: Text(tr('add_now')),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: () => setState(() => hideVesselPrompt = true),
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(48),
+                  ),
+                  child: Text(tr('skip_now')),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _assistantCard(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(24),
+      onTap: () => comingSoon(context, 'ORCA Assistant'),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: AppTheme.navy,
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Row(
+          children: [
+            Icon(Icons.mic_rounded, color: Colors.white, size: 32),
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    tr('ask_anything'),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    tr('ask_desc'),
+                    style: TextStyle(color: Colors.white60, fontSize: 12.5),
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.arrow_forward_rounded, color: Colors.white70),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _researcher(BuildContext context) {
     return _standardDashboard(
       context,
-      heading: 'Marine Research',
+      heading: tr('research_heading'),
       subtitle: 'Explore environmental conditions and historical patterns.',
       features: [
         FeatureCard(
@@ -235,10 +455,10 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAuthorityDashboard(BuildContext context) {
+  Widget _authority(BuildContext context) {
     return _standardDashboard(
       context,
-      heading: 'Marine Command Centre',
+      heading: tr('authority_heading'),
       subtitle: 'Monitor hazards and respond to emergencies.',
       features: [
         FeatureCard(
@@ -277,10 +497,10 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAdminDashboard(BuildContext context) {
+  Widget _admin(BuildContext context) {
     return _standardDashboard(
       context,
-      heading: 'ORCA Administration',
+      heading: tr('admin_heading'),
       subtitle: 'System monitoring and platform management.',
       features: [
         FeatureCard(
@@ -318,6 +538,7 @@ class DashboardScreen extends StatelessWidget {
     required List<Widget> features,
   }) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF4F8FA),
       body: SafeArea(
         child: ListView.separated(
           padding: const EdgeInsets.all(20),
@@ -327,10 +548,9 @@ class DashboardScreen extends StatelessWidget {
             if (index == 0) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 18),
-                child: _topBar(title: heading, subtitle: subtitle),
+                child: _topBar(context, title: heading, subtitle: subtitle),
               );
             }
-
             return features[index - 1];
           },
         ),
@@ -338,7 +558,11 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _topBar({required String title, required String subtitle}) {
+  Widget _topBar(
+    BuildContext context, {
+    required String title,
+    required String subtitle,
+  }) {
     return Row(
       children: [
         Expanded(
@@ -349,29 +573,108 @@ class DashboardScreen extends StatelessWidget {
                 title,
                 style: const TextStyle(
                   fontSize: 25,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w900,
                   color: AppTheme.navy,
+                  letterSpacing: -0.4,
                 ),
               ),
               const SizedBox(height: 4),
               Text(
                 subtitle,
-                style: const TextStyle(color: Colors.black54, fontSize: 13),
+                style: const TextStyle(
+                  color: Color(0xFF6F828B),
+                  fontSize: 13,
+                  height: 1.3,
+                ),
               ),
             ],
           ),
         ),
-        Container(
-          width: 46,
-          height: 46,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(color: const Color(0xFFE3EBEF)),
+        const SizedBox(width: 8),
+        PopupMenuButton<String>(
+          tooltip: 'Account',
+          offset: const Offset(0, 52),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
           ),
-          child: const Icon(
-            Icons.notifications_none_rounded,
-            color: AppTheme.navy,
+          onSelected: (value) async {
+            if (value == 'profile') {
+              await _openProfile();
+            } else if (value == 'vessels') {
+              await _openVessels();
+            } else if (value == 'language') {
+              // Preferred language is currently stored in the
+              // authenticated Fisherman profile.
+              await _openProfile();
+            } else if (value == 'logout') {
+              if (context.mounted) await _logout(context);
+            }
+          },
+          itemBuilder: (_) => [
+            if (role == UserRole.fisherman) ...[
+              PopupMenuItem(
+                value: 'profile',
+                child: Row(
+                  children: [
+                    const Icon(Icons.person_outline_rounded),
+                    SizedBox(width: 10),
+                    Text(tr('my_profile')),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'vessels',
+                child: Row(
+                  children: [
+                    const Icon(Icons.sailing_rounded),
+                    SizedBox(width: 10),
+                    Text(tr('my_vessels')),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'language',
+                child: Row(
+                  children: [
+                    const Icon(Icons.language_rounded),
+                    SizedBox(width: 10),
+                    Text(tr('language')),
+                  ],
+                ),
+              ),
+              const PopupMenuDivider(),
+            ],
+            PopupMenuItem(
+              value: 'logout',
+              child: Row(
+                children: [
+                  Icon(Icons.logout_rounded, color: AppTheme.danger),
+                  SizedBox(width: 10),
+                  Text(
+                    tr('logout'),
+                    style: TextStyle(
+                      color: AppTheme.danger,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+          child: Container(
+            width: 46,
+            height: 46,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [AppTheme.navy, AppTheme.oceanBlue],
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const Icon(
+              Icons.person_rounded,
+              color: Colors.white,
+              size: 22,
+            ),
           ),
         ),
       ],
@@ -386,14 +689,14 @@ class DashboardScreen extends StatelessWidget {
           title,
           style: const TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w900,
             color: AppTheme.navy,
           ),
         ),
         const SizedBox(height: 3),
         Text(
           subtitle,
-          style: const TextStyle(color: Colors.black45, fontSize: 12.5),
+          style: const TextStyle(color: Color(0xFF73858D), fontSize: 12.5),
         ),
       ],
     );
@@ -415,7 +718,23 @@ class DashboardScreen extends StatelessWidget {
 
         return InkWell(
           borderRadius: BorderRadius.circular(22),
-          onTap: () => comingSoon(context, action.title),
+          onTap: () {
+            if (action.actionId == 'sea_conditions') {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const SeaConditionsScreen()),
+              );
+              return;
+            }
+
+            if (action.actionId == 'plan_trip') {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (_) => const PlanTripScreen()));
+              return;
+            }
+
+            comingSoon(context, action.title);
+          },
           child: Container(
             padding: const EdgeInsets.all(17),
             decoration: BoxDecoration(
@@ -440,7 +759,7 @@ class DashboardScreen extends StatelessWidget {
                   action.title,
                   style: const TextStyle(
                     color: AppTheme.navy,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w800,
                     fontSize: 14,
                   ),
                 ),
@@ -457,6 +776,7 @@ class _QuickAction {
   final String title;
   final IconData icon;
   final Color color;
+  final String? actionId;
 
-  const _QuickAction(this.title, this.icon, this.color);
+  const _QuickAction(this.title, this.icon, this.color, {this.actionId});
 }
