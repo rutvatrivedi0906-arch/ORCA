@@ -1,801 +1,434 @@
 <div align="center">
 
-# ORCA
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1B1C18,55:4F46E5,100:C4BBF0&height=250&section=header&text=ORCA&fontSize=96&fontColor=ffffff&fontAlignY=38&desc=Voice-first%20%C2%B7%20Offline%20Marine%20Safety%20Copilot&descSize=22&descAlignY=60&animation=fadeIn" width="100%" alt="ORCA — Voice-first, Offline Marine Safety Copilot" />
 
-### Marine EcOsystem Reasoning with Collaborative Agents
+<br/>
 
-**An offline-first Agentic Marine Intelligence Platform for fishermen, marine researchers, coastal authorities and administrators.**
+<a href="https://orca-app-gold.vercel.app" target="_blank">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=800&size=28&pause=1000&color=4F46E5&center=true&vCenter=true&width=820&height=60&lines=IS+IT+SAFE+TO+GO+TO+SEA+TODAY%3F;WHERE+ARE+THE+FISH%3F;SAFETY+GATE+THAT+FAILS+CLOSED;9+COASTAL+LANGUAGES+%C2%B7+100%25+OFFLINE" alt="Typing SVG" />
+</a>
 
-ORCA transforms complex satellite, oceanographic, weather and geospatial data into **clear, evidence-backed marine decisions** — while keeping scientific calculations inside domain models, GIS algorithms and deterministic safety logic rather than delegating them to a language model.
+<br/>
 
-<p>
-  <img src="https://img.shields.io/badge/SIH-2026-087EA4?style=flat-square" alt="SIH 2026"/>
-  <img src="https://img.shields.io/badge/Problem%20Statement-26176-15B8A6?style=flat-square" alt="Problem Statement 26176"/>
-  <img src="https://img.shields.io/badge/Flutter-3.47.5-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter"/>
-  <img src="https://img.shields.io/badge/FastAPI-Python-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
-  <img src="https://img.shields.io/badge/PostgreSQL-18-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
-  <img src="https://img.shields.io/badge/PostGIS-enabled-336791?style=flat-square" alt="PostGIS"/>
-  <img src="https://img.shields.io/badge/status-functional%20prototype-F5A623?style=flat-square" alt="Functional Prototype"/>
-</p>
+[![Mobile](https://img.shields.io/badge/Mobile-React%20Native%200.86%20%7C%20Expo%20SDK%2057-4F46E5?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev/)
+[![Backend](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express%205-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20PostGIS%20%7C%20PGlite-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgis.net/)
+[![Dashboard](https://img.shields.io/badge/Dashboard-React%2019%20%7C%20Vite%20%7C%20Leaflet-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Speech](https://img.shields.io/badge/On--device%20AI-whisper.cpp%20%7C%20IndicTTS-F07A5A?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/ggerganov/whisper.cpp)
 
-<p>
-  <a href="#overview">Overview</a> ·
-  <a href="#what-makes-orca-different">Why ORCA</a> ·
-  <a href="#how-it-works">How it works</a> ·
-  <a href="#role-based-experience">Roles</a> ·
-  <a href="#agentic-intelligence-architecture">Architecture</a> ·
-  <a href="#tech-stack">Tech stack</a> ·
-  <a href="#getting-started">Getting started</a> ·
-  <a href="#prototype-status">Prototype status</a>
-</p>
+<br/>
+
+![SIH](https://img.shields.io/badge/SIH%202026-SIH26176-C4BBF0?style=flat-square&labelColor=1B1C18)
+![Tests](https://img.shields.io/badge/tests-166%20passing-A3C12B?style=flat-square&labelColor=1B1C18)
+![Offline](https://img.shields.io/badge/mode-offline--first-E3F163?style=flat-square&labelColor=1B1C18)
+![Languages](https://img.shields.io/badge/languages-9-F07A5A?style=flat-square&labelColor=1B1C18)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white&labelColor=1B1C18)
+
+<br/>
+
+> **🌊 "Jaan pehle, kamai baad me." A voice-first, offline copilot that tells a fisherman whether it is safe to go to sea, and where the fish are, in his own language. When a warning is active, the fishing advice cannot run at all.**
+
+[🌐 **LIVE WEBSITE**](https://orca-app-gold.vercel.app) &nbsp;•&nbsp; [📲 **DOWNLOAD APK**](https://orca-app-gold.vercel.app/ORCA-1.0.1.apk) &nbsp;•&nbsp; [🏗️ **ARCHITECTURE**](#-system-architecture) &nbsp;•&nbsp; [🚀 **QUICKSTART**](#-quickstart)
+
+<br/>
+
+<img src=".github/assets/banner.svg" alt="ORCA preview" width="100%" />
 
 </div>
 
 ---
 
-## Overview
+<br/>
 
-ORCA was built for **Smart India Hackathon 2026 — ISRO Problem Statement 26176**.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=4F46E5&height=60&text=🏆%20WHAT%20MAKES%20ORCA%20DIFFERENT&fontColor=ffffff&fontSize=30" alt="What makes ORCA different"/>
+</div>
 
-Marine decisions are rarely based on a single variable. A fisherman deciding whether to leave shore may need to consider waves, wind, current, tide, weather warnings, a fishing opportunity, vessel capability, route exposure and maritime boundaries at the same time. A researcher needs access to the underlying evidence and uncertainty, while a coastal authority needs an operational view of distress incidents, hazards and geofences.
+<br/>
 
-ORCA brings those workflows into one system.
+Most marine apps are dashboards of numbers: wave charts, wind barbs and bulletins in English that assume a data connection and a literate reader. **ORCA** turns them into one clear, spoken answer in the fisherman's language, and it keeps working far from the coast.
 
-The platform combines **satellite Earth-observation data, marine forecasts, GIS layers, machine-learning models, deterministic scientific calculations and collaborative AI agents**. The result is not just another marine dashboard: ORCA converts heterogeneous marine evidence into a role-specific decision and an immediate next action.
+- **🛡️ Safety Gate that fails closed:** five deterministic checks with no AI in the decision. Missing, unreadable or stale data (older than 12 hours) **blocks** fishing advice instead of guessing.
+- **🔒 Locked in code, not hidden in the UI:** a safe result mints a **SafePass**. The trip planner refuses to run without one, so during a warning the fishing path is unreachable, and a test suite proves it.
+- **🎙️ Voice-first and fully offline:** on-device speech-to-text with **whisper.cpp** (`whisper.rn`), keyword intent detection across **9 languages** with code-mixed speech, and spoken replies from recorded clips or the phone's own voice.
+- **📝 No machine translation for safety text:** every warning uses fixed, pre-written templates in தமிழ் · తెలుగు · മലയാളம் · বাংলা · ଓଡ଼ିଆ · मराठी · ಕನ್ನಡ · हिन्दी · English.
+- **🆘 SOS that is never lost:** a 10-second cancel window, then an SOS with the **last 6 hours of GPS trail**, queued offline and sent automatically when signal returns.
+- **🚩 IMBL border alarm:** a full-screen siren, vibration and a spoken *"turn back"* at 5 km from the India–Sri Lanka maritime line.
+- **🗺️ ORCA Command:** officers see the live fleet, dispatch SOS alerts and broadcast district warnings that land in **every phone's Safety Gate** and go out by SMS in each fisherman's language.
 
-For fishermen, the answer is intentionally simple:
-
-> **Decision → Why → What to do → Evidence**
-
-For researchers, the same system exposes a more technical view:
-
-> **Datasets → Variables → Spatiotemporal context → Method → Result → Uncertainty → Provenance**
-
-For authorities, ORCA becomes an operational command layer:
-
-> **Incident → Position → Hazard context → Acknowledge → Assign → Resolve**
+<br/>
 
 ---
 
-## What makes ORCA different
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=1B1C18&height=60&text=🛡️%20THE%20SAFETY%20GATE&fontColor=E3F163&fontSize=30" alt="The Safety Gate"/>
+</div>
 
-Most marine tools specialize in one part of the problem: weather visualization, navigation, scientific data access or incident handling. ORCA is designed around the **decision workflow that connects them**.
+<br/>
 
-Its core engineering principle is:
+<img src=".github/assets/safety-gate.svg" alt="Safety Gate animation — calm conditions pass, a cyclone warning blocks" width="100%" />
 
-> **Agents decide what needs to be done. Domain models make predictions. GIS and scientific algorithms perform calculations. The LLM explains the result.**
-
-This separation is important. ORCA does **not** ask a language model to calculate a PFZ probability, marine distance, geofence intersection, route, wave-risk score, GPS position or SOS state. Those operations remain deterministic or model-driven.
-
-ORCA stands out through five ideas:
-
-- **Collaborative agent orchestration** — specialized language, intent, planning, marine-data, habitat, route, boundary, safety and explanation components cooperate on a query.
-- **Decision-first fisherman UX** — the system leads with a clear action instead of overwhelming the user with raw marine data.
-- **Offline-first mission intelligence** — route, boundary, mission and cached safety context are designed to remain useful when connectivity becomes unreliable at sea.
-- **One intelligence layer, multiple roles** — fisherman, researcher, authority and admin views use the same underlying marine evidence but present it at the level each role needs.
-- **Evidence and abstention** — freshness, provenance and uncertainty are first-class concepts; when required evidence is stale or unavailable, ORCA is designed to say so rather than fabricate certainty.
-
----
-
-## How it works
-
-A user starts with a natural-language or voice request. ORCA identifies the role, language, intent, location and required evidence. The planner/orchestrator then selects the necessary tools and agents.
+<br/>
 
 ```mermaid
-flowchart LR
-    U["User / Voice Query"] --> L["Language + Intent"]
-    L --> P["Planner / Orchestrator"]
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, Segoe UI, sans-serif','primaryColor':'#E9E5FB','primaryTextColor':'#1B1C18','primaryBorderColor':'#4F46E5','lineColor':'#686B63'}}}%%
+graph TD
+    A[🎙️ Fisherman asks: Can I go today?] --> B[📦 Cached marine bundle on the phone]
+    B --> C{Data present and ≤ 12 h old?}
+    C -->|No| X[🔴 BLOCKED · NO_DATA / STALE_DATA]
+    C -->|Yes| D{Cyclone or active warning?}
+    D -->|Yes| X2[🔴 BLOCKED · CYCLONE_WARNING]
+    D -->|No| E{Do-not-venture advisory?}
+    E -->|Yes| X3[🔴 BLOCKED · DO_NOT_VENTURE]
+    E -->|No| F{Waves ≤ 2.5 m and wind ≤ 40 km/h?}
+    F -->|No| X4[🔴 BLOCKED · HIGH_WAVES / STRONG_WIND]
+    F -->|Yes| G[🟢 SAFE · SafePass minted, valid 30 min]
+    G --> H[🧭 Trip planner: 18 km SE · ~24 L diesel · back by 4 PM]
+    X & X2 & X3 & X4 --> Z[🔒 Fixed warning in the fisherman's language · trip planner never runs]
 
-    P --> M["Marine Data"]
-    P --> H["Habitat / Opportunity"]
-    P --> G["Geospatial + Boundary"]
-    P --> R["Route + Risk"]
-    P --> S["SOS / Safety State"]
-
-    M --> E["Evidence Layer"]
-    H --> E
-    G --> E
-    R --> E
-    S --> E
-
-    E --> X["Role-aware Explanation"]
-    X --> D["Decision + Action + Evidence"]
+    classDef stop fill:#FBE4E1,stroke:#E0685A,color:#1B1C18
+    classDef go fill:#EEF5C4,stroke:#A3C12B,color:#1B1C18
+    class X,X2,X3,X4,Z stop
+    class G,H go
 ```
 
-A fisherman asking _“Is it safe to go tomorrow morning?”_ can trigger marine-condition retrieval, forecast-validity checks, hazard screening, route/boundary context and vessel-aware reasoning. A researcher asking _“Where are high chlorophyll and favourable SST regions?”_ follows a different workflow focused on spatial analysis, variables, model outputs and provenance.
+| # | Check | Blocks when | Reason code |
+| :-: | :--- | :--- | :--- |
+| 1 | **Warnings** | any IMD / INCOIS / officer warning is active | `CYCLONE_WARNING` · `ACTIVE_WARNING` |
+| 2 | **Waves** | above **2.5 m**, or unknown | `HIGH_WAVES` · `NO_DATA` |
+| 3 | **Wind** | above **40 km/h**, or unknown | `STRONG_WIND` · `NO_DATA` |
+| 4 | **Advisory** | a "do not venture" advisory is issued | `DO_NOT_VENTURE` |
+| 5 | **Freshness** | data is older than **12 hours** | `STALE_DATA` |
 
-ORCA therefore acts as an **orchestration layer over scientific tools**, not as a replacement for them.
+> 🔒 *Calling the trip planner without a genuine, unexpired SafePass throws `SafetyGateError: Fishing advice requires a SafePass issued by the Safety Gate.` A pass can only be created inside `evaluateSafety()`, where it is tracked in a private `WeakSet`, so a forged object is always rejected.*
 
----
-
-## Role-based experience
-
-### 1. Fisherman Mobile Copilot
-
-The Fisherman experience is the primary mobile workflow and is built in **Flutter**.
-
-#### Ask ORCA
-
-A multilingual, voice-enabled marine copilot designed to answer practical questions such as:
-
-- Is it safe to go now?
-- What are the sea conditions near me?
-- Which route has lower exposure?
-- Where is the most suitable fishing opportunity?
-- Am I approaching a restricted or unsafe area?
-
-The response is intentionally concise for fishermen and keeps detailed evidence secondary.
-
-**Real-world impact:** reduces the cognitive load of interpreting several disconnected marine sources while at sea.
-
-#### Sea Conditions
-
-Combines the available marine context into a single view: waves, wind, currents and related safety information.
-
-**Real-world impact:** enables the fisherman to assess operating conditions before and during a mission.
-
-#### Fishing Opportunity + Mission Planner
-
-The prototype can select a fishing-opportunity destination and build marine route alternatives.
-
-Routing uses **water-aware graph/path planning**. The target production design uses A*/Dijkstra-style route search where land or prohibited cells can be excluded and marine exposure can contribute to route cost.
-
-ORCA can therefore distinguish between:
-
-- **faster route**, and
-- **lower-exposure route**
-
-instead of treating shortest distance as automatically safest.
-
-**Real-world impact:** helps a fisherman balance travel time, operating conditions and safety before starting a trip.
-
-> Prototype fishing-opportunity zones are clearly labelled as demo/synthetic until the verified operational PFZ adapter is connected.
-
-#### Vessel Profile
-
-A fisherman stores vessel-specific context such as vessel identity, type and cruising-speed information.
-
-That data supports:
-
-- travel-time estimation,
-- mission planning,
-- route evaluation,
-- vessel-specific safety context,
-- emergency incident context.
-
-During SOS, the vessel profile can travel with the distress context so the command centre understands **who is in distress, where they are and what vessel they are operating**.
-
-**Real-world impact:** moves ORCA from generic marine advice toward vessel-aware decision support.
-
-#### Boundary Guardian
-
-ORCA checks marine geofences and boundary layers using geospatial calculations rather than language-model inference.
-
-The production design supports:
-
-- restricted/avoid areas,
-- protected regions,
-- boundary proximity,
-- projected boundary crossing,
-- offline cached geofence checks.
-
-**Real-world impact:** gives fishermen earlier awareness before entering a restricted or unsafe area.
-
-#### Offline Mission Pack
-
-ORCA follows an offline-first design.
-
-A mission pack is intended to preserve critical trip context such as:
-
-- selected and alternate routes,
-- mission waypoints,
-- cached geofences and hazards,
-- forecast snapshots and validity,
-- evidence metadata,
-- safe-return context.
-
-The current prototype includes the core offline-readiness workflow and mission-pack state.
-
-**Real-world impact:** critical navigation and safety context does not disappear simply because mobile connectivity becomes weak offshore.
-
-#### SOS Survival Mode
-
-SOS is deterministic and safety-critical.
-
-The prototype supports a local incident lifecycle:
-
-```text
-QUEUED_LOCAL → ACKNOWLEDGED → ASSIGNED → RESOLVED
-```
-
-The UI deliberately distinguishes **queued**, **sent/acknowledged** and **resolved** states. ORCA must never claim that rescue is on the way unless a real acknowledgement exists.
-
-The survival view is designed to combine:
-
-- current fisherman position,
-- vessel/mission context,
-- safer return guidance,
-- route bearing and distance,
-- hazard awareness,
-- rescue-command incident state.
-
-**Real-world impact:** gives the fisherman useful survival guidance while also providing authorities with structured distress context.
+<br/>
 
 ---
 
-### 2. Marine Researcher Workspace
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=4F46E5&height=60&text=🏗️%20SYSTEM%20ARCHITECTURE&fontColor=ffffff&fontSize=30" alt="System architecture"/>
+</div>
 
-The researcher experience uses the same marine intelligence layer but exposes the scientific evidence rather than simplifying it into only a Yes/No decision.
+<br/>
 
-> In the current hackathon prototype, researcher views are accessible through the role-preview workflow. The production architecture targets the dedicated `web_dashboard/` application.
-
-#### Ask ORCA Research — **Working in prototype**
-
-Researchers can ask natural-language questions and receive a professional research-style response containing:
-
-- finding,
-- datasets,
-- methodology,
-- uncertainty,
-- provenance,
-- suggested next analysis.
-
-Example:
-
-> _Where are high chlorophyll and favourable SST regions?_
-
-**Technology:** agentic query planning, marine-data adapters, structured evidence objects, geospatial context and role-specific explanation.
-
-**Real-world impact:** shortens the path from a research question to an interpretable analysis while keeping the source evidence visible.
-
-#### Data Explorer — **Working in prototype**
-
-A spatial view for examining variables such as:
-
-- SST,
-- chlorophyll,
-- wind,
-- waves,
-- currents,
-- bathymetry,
-- habitat/opportunity signals.
-
-**Technology:** map layers, marine raster/vector data, geospatial processing, PostGIS-oriented spatial architecture and Flutter-map prototype visualization.
-
-**Real-world impact:** allows researchers to compare multiple environmental variables within one spatial context instead of manually switching between separate portals.
-
-#### Productivity Investigator — **Working in prototype**
-
-Designed to examine how environmental suitability changes across time.
-
-The prototype demonstrates relationships between changing marine variables and relative fishing suitability.
-
-**Technology:** time-series comparison, environmental features, habitat-opportunity outputs and anomaly-oriented analysis.
-
-ORCA intentionally avoids unsupported causation. Without validated landing or CPUE data, it describes **environmental indicators associated with reduced fishing suitability**, not biological causation.
-
-**Real-world impact:** helps researchers quickly identify periods or areas that deserve deeper investigation.
-
-#### Anomaly Detection — **Planned / not yet fully implemented**
-
-Planned to identify unusual marine conditions relative to seasonal or historical behaviour.
-
-Target methods include:
-
-- seasonal normalization,
-- temporal comparison,
-- Isolation Forest / statistical anomaly detection,
-- spatial anomaly mapping.
-
-**Real-world impact:** can surface unusual temperature, chlorophyll or other marine-condition patterns earlier for scientific review.
-
-#### Reports — **Planned / not yet fully implemented**
-
-Designed to convert an ORCA analysis into a reproducible summary containing maps, variables, evidence, model/tool versions and provenance.
-
-**Real-world impact:** reduces manual reporting effort and improves traceability from conclusion back to source data.
-
----
-
-### 3. Marine Command Centre — Coastal Authority / Rescue
-
-The Authority view connects fisherman safety with operational response.
-
-#### Active SOS — **Working in prototype**
-
-Receives a distress incident and exposes the operational lifecycle:
-
-- queued,
-- acknowledged,
-- assigned,
-- resolved.
-
-The prototype can demonstrate fisherman-to-authority SOS state handling locally.
-
-**Real-world impact:** gives rescue operators a structured incident instead of an uncontextualized distress message.
-
-#### Hazard Map — **Prototype operational view**
-
-Designed to combine incident locations, marine hazards, safer corridors and restricted areas on one map.
-
-**Technology:** Flutter map prototype, geospatial layers, route geometry and PostGIS-oriented production architecture.
-
-**Real-world impact:** creates a shared operating picture for emergency and hazard decisions.
-
-#### Marine Alerts — **Prototype operational view**
-
-Designed to synthesize safety-relevant information such as:
-
-- high waves,
-- tide context,
-- cyclone proximity,
-- lightning risk,
-- route-corridor exposure.
-
-**Real-world impact:** changes raw warning data into actionable operational context for affected areas and vessels.
-
-#### Geofences — **Prototype operational view**
-
-Maintains operational avoid, restricted, boundary-watch and safe-return zones.
-
-**Technology:** spatial polygons, intersection/containment logic, PostGIS and on-device cached geofences.
-
-**Real-world impact:** enables proactive boundary and restricted-area awareness rather than reacting after a crossing occurs.
-
-#### Incident History — **Prototype operational view**
-
-Preserves resolved incident state, response actions and outcomes.
-
-**Real-world impact:** supports after-action review, recurring-risk analysis and operational accountability.
-
----
-
-### 4. ORCA Administration
-
-The administration layer focuses on **trust, observability and platform health** rather than marine decision-making.
-
-#### Dataset Health
-
-Tracks whether required marine sources are configured, available, fresh, stale or pending.
-
-**Real-world impact:** prevents an apparently intelligent answer from hiding poor or outdated source data.
-
-#### Model Registry
-
-Tracks model identity, purpose, version and validation metrics.
-
-The current experimental habitat-opportunity model is treated as a **relative suitability/opportunity ranker**, not an official PFZ probability model.
-
-Current evaluation snapshot:
-
-| Metric | Value |
-| :-- | --: |
-| ROC-AUC | 0.671 |
-| PR-AUC | 0.487 |
-| F1 | 0.437 |
-| Brier score | 0.232 |
-
-**Real-world impact:** allows technical teams to know which model produced an output and how it was validated.
-
-#### Agent Monitoring
-
-Provides visibility into the collaborative pipeline, including components such as:
-
-- Language Agent,
-- Intent Agent,
-- Planner / Orchestrator,
-- Context Agent,
-- Marine Data Agent,
-- Habitat Agent,
-- Boundary Agent,
-- Route Agent,
-- Risk logic,
-- Explanation Agent,
-- SOS workflow.
-
-**Real-world impact:** makes an agentic system inspectable instead of behaving like a single opaque chatbot.
-
-#### System Health
-
-Tracks readiness of major platform components such as the mobile client, backend, database, spatial layer, offline state and SOS prototype.
-
-**Real-world impact:** helps operators distinguish a marine-data problem from a model, database, API or application problem.
-
----
-
-## Agentic intelligence architecture
-
-ORCA is intentionally modular.
+One shared brain, **`@orca/core`**, runs **identically on the phone and on the server**. The phone never needs a connection to make a safety decision.
 
 ```mermaid
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, Segoe UI, sans-serif','primaryColor':'#FFFFFF','primaryTextColor':'#1B1C18','primaryBorderColor':'#A9AC9F','lineColor':'#686B63','clusterBkg':'#F4F5EE','clusterBorder':'#C4BBF0'}}}%%
 flowchart TB
-    subgraph Clients
-        F["Fisherman Mobile<br/>Flutter"]
-        R["Researcher Workspace"]
-        A["Authority / Rescue"]
-        AD["Admin"]
+    subgraph Client [📱 Mobile App · Expo SDK 57 + React Native 0.86]
+        FP[Fisherman Voice UI]
+        STT[whisper.rn · offline speech-to-text]
+        CORE1[["@orca/core · Safety Gate · Intent · Trip Planner"]]
+        LITE[(SQLite · offline bundle + SOS queue)]
+        BG[Background GPS · 5-min trail · IMBL alarm]
     end
 
-    subgraph API
-        B["FastAPI + Pydantic"]
-        AU["JWT / Role-based Access"]
+    subgraph Command [🗺️ ORCA Command · React 19 + Vite + Leaflet]
+        OP[Officer Fleet Map · SOS Dispatch · Broadcast]
     end
 
-    subgraph Agents
-        LA["Language"]
-        IA["Intent"]
-        PA["Planner / Orchestrator"]
-        DA["Marine Data"]
-        HA["Habitat"]
-        GA["Geospatial"]
-        BA["Boundary"]
-        RA["Route"]
-        SA["Safety / Risk"]
-        EA["Evidence + Explanation"]
+    subgraph Server [🖥️ API Server · Node.js + Express 5]
+        API[REST API · zod · helmet · rate limiting · JWT]
+        ING[Hourly Ingestion · node-cron]
+        CORE2[["@orca/core · same pipeline for IVR / SMS"]]
+        ASR[whisper.cpp ASR]
     end
 
-    subgraph Scientific_GIS["Scientific / GIS Layer"]
-        ML["Domain ML Models"]
-        GIS["PostGIS / GeoAlchemy2"]
-        ALG["A* / Dijkstra /<br/>distance / intersection"]
+    subgraph Data [🗄️ Data & Spatial Layer]
+        PG[(PostgreSQL + PostGIS · or embedded PGlite)]
     end
 
-    subgraph Data
-        PG[("PostgreSQL 18 + PostGIS")]
-        EO["Marine / EO datasets"]
-        CACHE["Offline Mission Pack"]
+    subgraph External [🌐 External Sources]
+        OM[Open-Meteo · live sea state]
+        IMD[IMD · cyclone & marine warnings]
+        INC[INCOIS · PFZ fishing zones]
+        TW[Twilio · Verify OTP + SMS]
     end
 
-    F --> B
-    R --> B
-    A --> B
-    AD --> B
+    FP --> STT --> CORE1
+    BG --> CORE1
+    CORE1 <--> LITE
+    LITE <-->|/bundle · /positions · /sos| API
+    OP <-->|/fleet · /broadcast · /warnings| API
+    API --- CORE2
+    API --- ASR
+    API <--> PG
+    ING --> PG
+    OM & IMD & INC --> ING
+    API <--> TW
 
-    B --> AU
-    AU --> PA
-    PA --> LA
-    PA --> IA
-    PA --> DA
-    PA --> HA
-    PA --> GA
-    PA --> BA
-    PA --> RA
-    PA --> SA
-
-    DA --> EO
-    HA --> ML
-    GA --> GIS
-    BA --> GIS
-    RA --> ALG
-    SA --> ALG
-
-    GIS --> PG
-    B --> PG
-    EA --> B
-    F <--> CACHE
+    classDef core fill:#1B1C18,stroke:#1B1C18,color:#E3F163
+    class CORE1,CORE2 core
 ```
 
----
-
-## Safety and explainability rules
-
-ORCA follows several hard rules:
-
-1. **The LLM does not perform scientific calculations.**
-2. **SOS state is deterministic.**
-3. **A queued SOS is not described as acknowledged.**
-4. **A synthetic/demo PFZ is never described as an official live PFZ.**
-5. **Stale evidence can trigger abstention rather than false certainty.**
-6. **Opportunity and safety are separate concepts.**
-7. **Correlation is not reported as biological causation without the required evidence.**
-8. **Marine routing is decision support, not autopilot.**
-
-These rules are as important as the interface itself because ORCA operates in a safety-sensitive domain.
+<br/>
 
 ---
 
-## Marine data and model layer
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=C4BBF0&height=60&text=🔄%20HOW%20A%20QUESTION%20IS%20ANSWERED&fontColor=1B1C18&fontSize=30" alt="How a question is answered"/>
+</div>
 
-ORCA's data architecture is built to work with authoritative or scientifically recognized sources where available.
+<br/>
 
-| Source / dataset | ORCA use | Prototype state |
-| :-- | :-- | :-- |
-| GEBCO | Bathymetry / depth features | Integrated locally |
-| NOAA OISST v2.1 | Sea-surface temperature | Runtime adapter configured |
-| Ocean-colour / chlorophyll data | Productivity / habitat features | Freshness-gated adapter |
-| Open-Meteo marine/weather data | Development wave/wind context | Development integration |
-| CMLRE records | Habitat training/reference | Used after QC |
-| IndOBIS | Biodiversity occurrence reference | Used as supplemental/reference data |
-| Official operational PFZ advisory | Verified fishing-zone candidate | Adapter pending |
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, Segoe UI, sans-serif','actorBkg':'#E9E5FB','actorBorder':'#4F46E5','actorTextColor':'#1B1C18','signalColor':'#3A3C35','signalTextColor':'#1B1C18','noteBkgColor':'#EEF5C4','noteBorderColor':'#A3C12B'}}}%%
+sequenceDiagram
+    autonumber
+    actor F as 🧑‍✈️ Fisherman
+    participant App as 📱 ORCA App
+    participant STT as 🎙️ whisper.rn
+    participant I as 🔤 Intent Parser
+    participant G as 🛡️ Safety Gate
+    participant P as 🧭 Trip Planner
 
-The habitat model currently represents **experimental relative habitat opportunity/suitability**. It is not presented as an official PFZ classifier or calibrated fish-catch probability.
+    F->>App: Hold mic · "இன்று போகலாமா?"
+    App->>STT: audio (on-device, offline)
+    STT-->>App: transcript
+    App->>I: transcript + language
+    I-->>App: SAFETY_CHECK (safety words always win)
+    App->>G: cached marine conditions
+    alt Sea is safe
+        G-->>App: ✅ SafePass (30 min)
+        App->>P: plan(zone, SafePass)
+        P-->>App: 18 km SE · ~24 L · back by 4 PM
+        App-->>F: 🟢 green card + spoken Tamil reply + return reminder
+    else Warning or stale data
+        G-->>App: ⛔ blocked + reasons + warning end time
+        App-->>F: 🔴 red card + fixed Tamil warning
+        Note over P: Never called without a SafePass
+    end
+```
 
----
-
-## Tech stack
-
-| Layer | Technology |
-| :-- | :-- |
-| Fisherman mobile | Flutter, Dart, Material 3 |
-| Mobile maps / GPS | `flutter_map`, Geolocator, LatLng |
-| Voice | `speech_to_text`, `flutter_tts` |
-| Local prototype state | SharedPreferences / cached mission state |
-| Backend | Python, FastAPI, Uvicorn, Pydantic |
-| ORM / migrations | SQLAlchemy, GeoAlchemy2, Alembic |
-| Database | PostgreSQL 18 + PostGIS |
-| Authentication | JWT, role-based backend checks, Fisherman phone OTP workflow |
-| GIS | PostGIS, Shapely/PyProj-oriented geospatial services |
-| Routing | Water-grid A* / Dijkstra-style path planning |
-| ML | scikit-learn / gradient-boosting habitat-opportunity pipeline |
-| Research / EO processing | Xarray / geospatial scientific-data pipeline |
-| Web dashboard target | React, TypeScript, Vite |
-| Version control | Git + GitHub |
-
----
-
-## Prototype status
-
-The project is intentionally transparent about what is implemented, prototyped and still planned.
-
-| Area | Feature | Status |
-| :-- | :-- | :-- |
-| Fisherman | Phone OTP authentication | ✅ Implemented |
-| Fisherman | Ask ORCA | ✅ Working prototype |
-| Fisherman | Voice STT / TTS | ✅ Working prototype |
-| Fisherman | Sea conditions | ✅ Implemented |
-| Fisherman | Vessel profile | ✅ Implemented |
-| Fisherman | Boundary Guardian | ✅ Implemented |
-| Fisherman | Route planning | ✅ Implemented prototype |
-| Fisherman | Fishing-opportunity demo flow | ✅ Synthetic prototype |
-| Fisherman | Offline mission readiness | ✅ Core prototype |
-| Fisherman | SOS Survival Mode | ✅ Working prototype |
-| Researcher | Ask ORCA Research | ✅ Working prototype |
-| Researcher | Data Explorer | ✅ Working prototype |
-| Researcher | Productivity Investigator | ✅ Working prototype |
-| Researcher | Anomaly Detection | 🟡 Planned / partial design |
-| Researcher | Reports | 🟡 Planned |
-| Authority | Active SOS lifecycle | ✅ Working prototype |
-| Authority | Hazard Map | 🟡 Prototype operational view |
-| Authority | Marine Alerts | 🟡 Prototype operational view |
-| Authority | Geofences | 🟡 Prototype operational view |
-| Authority | Incident History | 🟡 Prototype operational view |
-| Admin | Dataset Health | 🟡 Prototype console |
-| Admin | Model Registry | 🟡 Prototype console |
-| Admin | Agent Monitoring | 🟡 Prototype console |
-| Admin | System Health | 🟡 Prototype console |
-| Data | Official live PFZ adapter | ⏳ Pending |
+<br/>
 
 ---
 
-## Getting started
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=F07A5A&height=60&text=🆘%20SOS%20%26%20BORDER%20SAFETY&fontColor=ffffff&fontSize=30" alt="SOS and border safety"/>
+</div>
 
-### Prerequisites
+<br/>
 
-- Flutter SDK
-- Android Studio / Android SDK
-- Python virtual environment
-- PostgreSQL 18
-- PostGIS
-- Git
-- A physical Android device or emulator
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, Segoe UI, sans-serif','primaryColor':'#FBE4E1','primaryTextColor':'#1B1C18','primaryBorderColor':'#E0685A','lineColor':'#686B63'}}}%%
+stateDiagram-v2
+    direction LR
+    [*] --> Countdown: 🆘 SOS pressed
+    Countdown --> [*]: cancelled within 10 s
+    Countdown --> Queued: saved with last 6 h trail
+    Queued --> Sent: signal available
+    Sent --> Queued: no signal · retry
+    Sent --> Relayed: control room + family SMS
+    Relayed --> Dispatched: officer responds
+    Dispatched --> [*]
+```
 
-The current development prototype has been run on Android with Flutter.
+| Border level | Distance to IMBL | What the fisherman gets |
+| :--- | :--- | :--- |
+| 🟢 `CLEAR` | more than 10 km | normal operation |
+| 🟠 `WATCH` | 10 km or less | warning chip on the home screen |
+| 🔴 `ALARM` | 5 km or less | full-screen alarm · siren · vibration · spoken *"turn back"* |
+| ⛔ `CROSSED` | across the line | crossed-border message until the boat returns |
 
-### 1. Clone the repository
+> ⚠️ *The IMBL coordinates in `packages/core/src/imbl.ts` come from the published 1974/1976 agreements. Replace them with the official Survey of India / Coast Guard dataset before real-world use.*
+
+<br/>
+
+---
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=1B1C18&height=60&text=📡%20LIVE%20DATA%20PIPELINE&fontColor=ffffff&fontSize=30" alt="Live data pipeline"/>
+</div>
+
+<br/>
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, Segoe UI, sans-serif','primaryColor':'#E9E5FB','primaryTextColor':'#1B1C18','primaryBorderColor':'#4F46E5','lineColor':'#686B63'}}}%%
+graph LR
+    A[⏱️ node-cron · every hour] --> B[🌊 Open-Meteo · 9 harbours]
+    A --> C[📰 IMD + INCOIS normalised feeds]
+    B & C --> D{✅ Valid?}
+    D -->|Yes| E[(🗄️ PostGIS)]
+    D -->|No / source down| F[♻️ Keep last good data]
+    F --> E
+    E --> G[📦 /bundle · sea state · warnings · PFZ zones · prices]
+    G --> H[📱 Cached on the phone]
+    H --> I{Older than 12 h?}
+    I -->|No| J[🟢 Gate may pass]
+    I -->|Yes| K[🔴 Gate blocks · STALE_DATA]
+```
+
+Sea state comes live from **Open-Meteo** every hour for 9 harbours, one per coastal language. IMD and INCOIS do not publish stable JSON APIs, so the server accepts one normalised feed per source (shapes in `apps/server/src/ingest/feeds.ts`). If a source fails, the last good data is kept, and its age stays visible on every phone.
+
+<br/>
+
+---
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=4F46E5&height=60&text=🔐%20ROLES%20%26%20ACCESS&fontColor=ffffff&fontSize=30" alt="Roles and access"/>
+</div>
+
+<br/>
+
+| Role | Where | Access & rules |
+| :--- | :--- | :--- |
+| **Fisherman** | 📱 Mobile app | OTP login, language + harbour + family contact, Safety Gate answers, trip plans, SOS, trail upload |
+| **Fisheries Officer** | 🗺️ ORCA Command | Allow-listed officer role, live fleet map, SOS dispatch, per-boat SMS, 9-language district broadcast, officer warnings |
+| **Anyone (no login)** | 🌐 API | Health, harbour bundles, OTP, **SOS (never rejected, idempotent)**, speech-to-text, `/ask` for IVR / SMS channels |
+
+> 🔒 *An officer warning is not just a notification. It is stored as a warning, so it enters **every phone's Safety Gate** on the next bundle and blocks fishing advice across the district.*
+
+<br/>
+
+---
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=C4BBF0&height=60&text=🧰%20TECH%20STACK&fontColor=1B1C18&fontSize=30" alt="Tech stack"/>
+</div>
+
+<br/>
+
+| Layer | Package | Technologies |
+| :--- | :--- | :--- |
+| 🧠 **Shared brain** | `@orca/core` | TypeScript · Turf.js (distance, bearing, point-to-line) · suncalc · fixed i18n templates |
+| 📱 **Mobile** | `@orca/mobile` | Expo SDK 57 · React Native 0.86 · React 19 · expo-router · whisper.rn · expo-speech · expo-sqlite · expo-location · expo-task-manager · expo-notifications · expo-sms |
+| 🖥️ **Server** | `@orca/server` | Node.js · Express 5 · PGlite + PostGIS / PostgreSQL · node-cron · zod · helmet · express-rate-limit · JWT · multer · pino |
+| 🗺️ **Dashboard** | `@orca/dashboard` | React 19 · Vite 8 · Leaflet · react-leaflet · react-router |
+| 🔊 **Voice tooling** | `tools/voice` | Python · AI4Bharat IndicTTS · native-speaker recordings |
+| 🧪 **Quality** | all | Vitest · Supertest · embedded PostGIS integration tests · EAS Build |
+
+<br/>
+
+---
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=F07A5A&height=60&text=🚀%20QUICKSTART&fontColor=ffffff&fontSize=30" alt="Quickstart"/>
+</div>
+
+<br/>
+
+### 1️⃣ Clone & install
 
 ```bash
-git clone https://github.com/rutvatrivedi0906-arch/ORCA.git
-cd ORCA
+git clone <your-repo-url> orca
+cd orca
+npm install            # installs every workspace (npm workspaces)
 ```
 
-### 2. Start the FastAPI backend
-
-On Windows PowerShell:
-
-```powershell
-cd backend
-.\.venv\Scripts\Activate.ps1
-
-python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-FastAPI documentation is available locally at:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-> Configure the backend environment and PostgreSQL/PostGIS connection used by your local installation before startup. Never commit `.env` files or secrets.
-
-### 3. Prepare a physical Android device
-
-Check the device:
-
-```powershell
-adb devices
-```
-
-When using a physical Android device with the backend running on the development PC, reverse port `8000`:
-
-```powershell
-adb reverse tcp:8000 tcp:8000
-adb reverse --list
-```
-
-The Flutter app can then reach the local backend through:
-
-```text
-http://127.0.0.1:8000
-```
-
-### 4. Run the Flutter app
-
-```powershell
-cd marine_app
-
-flutter pub get
-flutter analyze
-flutter devices
-flutter run -d <device-id>
-```
-
----
-
-## Fisherman authentication flow
-
-The production-oriented flow is:
-
-```text
-Splash
-  ↓
-Landing / Onboarding
-  ↓
-Language + Visual / Voice Guide
-  ↓
-Role Selection
-  ↓
-Fisherman Phone Number
-  ↓
-OTP Verification
-  ↓
-First-time Registration (if required)
-  ↓
-Backend-verified Fisherman Dashboard
-```
-
-The backend remains authoritative for role verification.
-
----
-
-## Recommended prototype demo
-
-A short end-to-end judging flow:
-
-```text
-Fisherman
-  ↓
-Ask ORCA
-  ↓
-Sea / Safety Decision
-  ↓
-Choose Fishing Opportunity
-  ↓
-Plan Route
-  ↓
-Select Lower-Exposure Route
-  ↓
-Prepare Offline Mission
-  ↓
-Start Mission
-  ↓
-Trigger SOS Survival Mode
-  ↓
-Authority acknowledges / assigns / resolves incident
-  ↓
-Researcher explores marine data and Ask ORCA Research
-  ↓
-Admin reviews datasets, models, agents and system health
-```
-
----
-
-## Testing
-
-### Flutter static analysis
+### 2️⃣ Run the platform
 
 ```bash
-cd marine_app
-flutter analyze
+npm run server         # API on :4000 · embedded PostGIS · live Open-Meteo sea state
+npm run dashboard      # ORCA Command on :5173 (set VITE_API_URL if the API is not on :4000)
+npm run mobile         # Expo · scan the QR code with Expo Go (SDK 57)
 ```
 
-### Flutter tests
+### 3️⃣ Prove the Safety Gate
 
 ```bash
-flutter test
+npm test               # 166 tests · 127 core + 39 server
+npm run test:gate      # just the Safety Gate proof (show this to the jury)
+npm run test:db        # server store against a real embedded PostGIS (~40 s)
 ```
 
-### Backend
+> 💡 *Dev login everywhere: any number, OTP `123456`. In ORCA Command, **Load demo fleet** puts 40 simulated boats on the map. Without a server, the app runs in **offline demo mode** on bundled Nagapattinam scenarios. To connect a phone to your PC, set `EXPO_PUBLIC_API_URL=http://<your-PC-IP>:4000` in `apps/mobile/.env`.*
 
-Run the backend and verify the OpenAPI interface:
+> 📦 *Android APK: built in the cloud with EAS (no local Android SDK needed). See [`docs/BUILD.md`](docs/BUILD.md), or grab the latest build from the [website](https://orca-app-gold.vercel.app).*
 
-```text
-http://127.0.0.1:8000/docs
-```
-
-Key authentication endpoints include:
-
-```text
-POST /api/v1/auth/fisherman/request-otp
-POST /api/v1/auth/fisherman/verify-otp
-POST /api/v1/auth/fisherman/complete-registration
-```
-
-Safety-critical and geospatial behaviour should be validated independently from the language-model explanation layer.
+<br/>
 
 ---
 
-## Project structure
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=4F46E5&height=60&text=🎬%2090-SECOND%20DEMO&fontColor=ffffff&fontSize=30" alt="90-second demo"/>
+</div>
 
-```text
-ORCA/
-├── marine_app/            # Flutter Fisherman app + prototype role views
-│   ├── lib/
-│   │   ├── screens/       # Auth, dashboard, maps, SOS, researcher, authority, admin
-│   │   ├── services/      # API, auth, mission, offline, SOS and marine services
-│   │   ├── models/        # Flutter data models
-│   │   └── core/          # Theme and shared app configuration
-│   └── android/
-│
-├── web_dashboard/         # Production target for Researcher / Authority / Admin
-│
-├── backend/               # FastAPI backend
-│   ├── app/
-│   │   ├── agents/        # ORCA collaborative agents
-│   │   ├── services/      # Marine, route, auth and domain services
-│   │   ├── models/        # Database/domain models
-│   │   └── main.py
-│   └── alembic/           # Database migrations
-│
-├── ml/                    # Habitat-opportunity training/evaluation pipeline
-├── data/                  # Local development / research data workspace
-├── docs/                  # Architecture, presentation and project documentation
-└── README.md
+<br/>
+
+| # | Do this | You'll see |
+| :-: | :--- | :--- |
+| 1 | Log in: pick **தமிழ்**, choose *Fisherman*, OTP `123456` | Home screen with the big mic |
+| 2 | Tap **"இன்று போகலாமா?"** | 🟢 Green card + spoken Tamil: 18 km SE, ~24 L diesel, back by 4:00 PM |
+| 3 | ⚙ Settings → Demo scenario → **Cyclone day**, then ask again | 🔴 Red card, warning until *வியாழன் மாலை 6:00* · Zone Map locked |
+| 4 | Run `npm run test:gate` | ✅ Every test passes |
+| 5 | Turn on airplane mode, ask again | Still answers · data age still visible |
+| 6 | Press **SOS** | 10 s cancel window → queued with 6 h trail → SMS opens → auto-flush on signal |
+| 7 | ⚙ Settings → Demo boat position → **Near border** | Full-screen alarm, siren and spoken "turn back" |
+| 8 | After a green answer | "Return reminder set for 4:00 PM" · 2 notifications scheduled |
+
+<br/>
+
+<details>
+<summary><b>🔌 API reference (click to expand)</b></summary>
+
+<br/>
+
+| Endpoint | Access | What it does |
+| :--- | :--- | :--- |
+| `GET /health` | anyone | store, OTP/SMS/ASR mode, last ingestion |
+| `GET /harbours` · `GET /bundle?harbour=` | anyone | offline bundle: sea state + warnings + PFZ zones + prices |
+| `POST /auth/otp` · `POST /auth/verify` | anyone | OTP login (Twilio Verify, dev code `123456`); officer role is allow-listed |
+| `GET` · `PATCH /me` | logged in | language, harbour, family contact |
+| `POST /sos` | **anyone** | never rejected, idempotent; texts the control room and family in the fisherman's language |
+| `POST /positions` | fisherman | breadcrumb upload → fleet map |
+| `POST /asr` | anyone | audio → text via whisper.cpp (503 → phone falls back to buttons) |
+| `POST /ask` | anyone | same core pipeline server-side, for IVR / SMS channels |
+| `GET /fleet` · `GET` · `PATCH /sos` | officer | boats at sea, border status, return ETA, SOS dispatch |
+| `POST /broadcast` · `POST /notify` | officer | district warning in every language; text one boat |
+| `GET` · `POST` · `DELETE /warnings` | officer | officer warnings that enter every phone's Safety Gate |
+| `POST /demo/scenario` · `POST /ingest/run` | officer | stage a demo scenario; run ingestion now |
+
+</details>
+
+<details>
+<summary><b>📁 Repository layout (click to expand)</b></summary>
+
+<br/>
+
+```
+orca/
+├── packages/core        @orca/core: shared brain (phone AND server)
+│   ├── src/safetyGate.ts    5 checks · fails closed · unforgeable SafePass
+│   ├── src/intent.ts        keyword intent · 9 languages + code-mixing · no LLM
+│   ├── src/tripPlanner.ts   Turf.js distance · direction · diesel · return-by
+│   ├── src/copilot.ts       question → gate → fixed-template answer
+│   ├── src/imbl.ts          India–Sri Lanka border distance + side-of-line
+│   ├── src/trail.ts         breadcrumb trail · 1 point / 5 min · last 6 h
+│   ├── src/i18n/            fixed templates: ta te ml bn or mr kn hi en
+│   └── test/                127 tests
+├── apps/mobile          Expo SDK 57 / React Native app (fisherman + officer)
+├── apps/server          Express + PostGIS: ingestion, OTP, SOS relay, fleet, ASR
+├── apps/dashboard       ORCA Command: React + Vite + Leaflet
+├── tools/voice          render fixed safety sentences to clips (IndicTTS)
+└── docs/BUILD.md        Android APK build with EAS
 ```
 
----
+</details>
 
-## Responsible-use limitations
+<details>
+<summary><b>🧭 Safety principles (click to expand)</b></summary>
 
-ORCA is a **hackathon prototype and marine decision-support system**, not a substitute for official maritime warnings, legal navigation systems, SAR infrastructure or professional seamanship.
+<br/>
 
-In particular:
+- **No AI in the safety decision:** plain `if/else`, deterministic and testable.
+- **Fails closed:** missing, unreadable or stale (more than 12 h old) data blocks the fishing answer.
+- **No machine translation for safety text:** fixed templates, with native-speaker review tracked in `packages/core/TRANSLATIONS.md`.
+- **Over-triggering is acceptable, a miss is not:** safety keywords override fishing keywords.
+- **The data's age is always visible.**
 
-- demo/synthetic values must remain visibly labelled,
-- official advisories should override prototype data,
-- emergency transmission requires real connectivity or authorized communication infrastructure,
-- legal boundaries require authoritative datasets,
-- model outputs should include freshness, uncertainty and provenance,
-- safe-route guidance is advisory and must not be represented as autonomous navigation.
+</details>
 
----
-
-## Vision
-
-ORCA's goal is to create a common marine-intelligence layer where:
-
-- **fishermen receive simple, actionable and multilingual decisions,**
-- **researchers receive evidence, methodology and uncertainty,**
-- **coastal authorities receive incident and hazard awareness,**
-- **administrators can monitor the data, models and agents behind every decision.**
-
-> **ORCA — turning ocean data into decisions that matter.**
+<br/>
 
 ---
 
-## Smart India Hackathon 2026
+<div align="center">
 
-**Problem Statement:** 26176  
-**Organization:** ISRO  
-**Project:** ORCA — Marine EcOsystem Reasoning with Collaborative Agents
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:C4BBF0,45:4F46E5,100:1B1C18&height=150&section=footer&text=Jaan%20pehle%2C%20kamai%20baad%20me.&fontSize=30&fontColor=ffffff&fontAlignY=62" width="100%" alt="Footer" />
 
-Built as a functional prototype for Smart India Hackathon 2026.
+*ORCA: built for the fishermen of India's coast · Smart India Hackathon 2026 · SIH26176* 🇮🇳
+
+</div>

@@ -1,0 +1,136 @@
+<svg width="1100" height="440" viewBox="0 0 1100 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gateBg" x1="0" y1="0" x2="1100" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B0D13" />
+      <stop offset="50%" stop-color="#141824" />
+      <stop offset="100%" stop-color="#08090D" />
+    </linearGradient>
+
+    <!-- Pass Box Gradient -->
+    <linearGradient id="passGrad" x1="0" y1="0" x2="480" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#064E3B" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#022C22" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Block Box Gradient -->
+    <linearGradient id="blockGrad" x1="0" y1="0" x2="480" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7F1D1D" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#450A0A" stop-opacity="0.4" />
+    </linearGradient>
+
+    <filter id="gateShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", "Courier New", monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1100" height="440" rx="16" fill="url(#gateBg)" stroke="#1E2338" stroke-width="2" />
+
+  <!-- Title / Tagline -->
+  <g transform="translate(50, 42)">
+    <text x="0" y="0" fill="#FFFFFF" font-size="24" font-weight="800" class="font-sans">
+      Deterministic Safety Gate Architecture · "Fails Closed"
+    </text>
+    <text x="0" y="24" fill="#94A3B8" font-size="14" class="font-sans">
+      Trip Planner requires an unforgeable, on-device SafePass object. Without it, fishing advice cannot run.
+    </text>
+  </g>
+
+  <!-- LEFT: CALM SEA (PASS) -->
+  <g transform="translate(50, 95)" filter="url(#gateShadow)">
+    <rect width="475" height="270" rx="14" fill="url(#passGrad)" stroke="#10B981" stroke-width="1.5" />
+    
+    <!-- Header -->
+    <rect x="20" y="18" width="130" height="28" rx="14" fill="#065F46" />
+    <circle cx="34" cy="32" r="5" fill="#34D399" />
+    <text x="46" y="36" fill="#A7F3D0" font-size="12" font-weight="700" class="font-sans">PASS SCENARIO</text>
+
+    <text x="165" y="37" fill="#F0FDF4" font-size="15" font-weight="700" class="font-sans">Calm Sea Conditions</text>
+
+    <!-- Evaluation checks -->
+    <g transform="translate(24, 75)" font-size="13" class="font-sans">
+      <g transform="translate(0, 0)">
+        <circle cx="8" cy="8" r="8" fill="#10B981" />
+        <path d="M5 8L7.5 10.5L11.5 5.5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="26" y="12" fill="#E2E8F0">Waves: <tspan fill="#34D399" font-weight="700">1.2 m</tspan> (Threshold ≤ 2.5 m)</text>
+      </g>
+      <g transform="translate(0, 28)">
+        <circle cx="8" cy="8" r="8" fill="#10B981" />
+        <path d="M5 8L7.5 10.5L11.5 5.5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="26" y="12" fill="#E2E8F0">Wind Speed: <tspan fill="#34D399" font-weight="700">18 km/h</tspan> (Threshold ≤ 40 km/h)</text>
+      </g>
+      <g transform="translate(0, 56)">
+        <circle cx="8" cy="8" r="8" fill="#10B981" />
+        <path d="M5 8L7.5 10.5L11.5 5.5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="26" y="12" fill="#E2E8F0">Active Warnings: <tspan fill="#34D399" font-weight="700">None</tspan> (IMD / INCOIS)</text>
+      </g>
+      <g transform="translate(0, 84)">
+        <circle cx="8" cy="8" r="8" fill="#10B981" />
+        <path d="M5 8L7.5 10.5L11.5 5.5" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="26" y="12" fill="#E2E8F0">Cache Age: <tspan fill="#34D399" font-weight="700">1.5 hours</tspan> (Limit ≤ 12 hours)</text>
+      </g>
+    </g>
+
+    <!-- Result Box -->
+    <rect x="20" y="200" width="435" height="52" rx="10" fill="#047857" fill-opacity="0.3" stroke="#059669" stroke-width="1" />
+    <text x="36" y="222" fill="#A7F3D0" font-size="12" font-weight="700" class="mono">✔ SafePass MINTED · Valid for 30 minutes</text>
+    <text x="36" y="240" fill="#6EE7B7" font-size="12" class="font-sans">🧭 Trip planner runs: "18 km SE · ~24 L diesel · return 4:00 PM"</text>
+  </g>
+
+  <!-- RIGHT: CYCLONE / HAZARD (BLOCKED) -->
+  <g transform="translate(575, 95)" filter="url(#gateShadow)">
+    <rect width="475" height="270" rx="14" fill="url(#blockGrad)" stroke="#EF4444" stroke-width="1.5" />
+    
+    <!-- Header -->
+    <rect x="20" y="18" width="130" height="28" rx="14" fill="#991B1B" />
+    <circle cx="34" cy="32" r="5" fill="#F87171" />
+    <text x="46" y="36" fill="#FECACA" font-size="12" font-weight="700" class="font-sans">BLOCK SCENARIO</text>
+
+    <text x="165" y="37" fill="#FEF2F2" font-size="15" font-weight="700" class="font-sans">Cyclone Warning or Stale Data</text>
+
+    <!-- Evaluation checks -->
+    <g transform="translate(24, 75)" font-size="13" class="font-sans">
+      <g transform="translate(0, 0)">
+        <circle cx="8" cy="8" r="8" fill="#EF4444" />
+        <line x1="5" y1="5" x2="11" y2="11" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="11" y1="5" x2="5" y2="11" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+        <text x="26" y="12" fill="#E2E8F0">Active Warning: <tspan fill="#F87171" font-weight="700">CYCLONE_WARNING</tspan> (IMD BOB-04)</text>
+      </g>
+      <g transform="translate(0, 28)">
+        <circle cx="8" cy="8" r="8" fill="#EF4444" />
+        <line x1="5" y1="5" x2="11" y2="11" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="11" y1="5" x2="5" y2="11" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+        <text x="26" y="12" fill="#E2E8F0">Condition: <tspan fill="#F87171" font-weight="700">Rough Seas (3.8 m waves &gt; 2.5 m)</tspan></text>
+      </g>
+      <g transform="translate(0, 56)">
+        <circle cx="8" cy="8" r="8" fill="#64748B" />
+        <text x="26" y="12" fill="#94A3B8">Safety Gate: <tspan fill="#CBD5E1">Fails closed · Fast-exit triggered</tspan></text>
+      </g>
+      <g transform="translate(0, 84)">
+        <circle cx="8" cy="8" r="8" fill="#EF4444" />
+        <line x1="5" y1="5" x2="11" y2="11" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="11" y1="5" x2="5" y2="11" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" />
+        <text x="26" y="12" fill="#E2E8F0">SafePass Token: <tspan fill="#F87171" font-weight="700">DENIED / NEVER CREATED</tspan></text>
+      </g>
+    </g>
+
+    <!-- Result Box -->
+    <rect x="20" y="200" width="435" height="52" rx="10" fill="#B91C1C" fill-opacity="0.3" stroke="#DC2626" stroke-width="1" />
+    <text x="36" y="222" fill="#FCA5A5" font-size="12" font-weight="700" class="mono">⛔ BLOCKED · SafetyGateError Thrown</text>
+    <text x="36" y="240" fill="#FECACA" font-size="12" class="font-sans">🔒 Trip planner blocked · Spoken native voice alert: "கடலுக்கு செல்ல வேண்டாம்"</text>
+  </g>
+
+  <!-- Bottom Bar: Core Invariant -->
+  <g transform="translate(50, 390)">
+    <rect width="1000" height="32" rx="6" fill="#141824" stroke="#2A3048" stroke-width="1" />
+    <text x="20" y="20" fill="#E3F163" font-size="12" font-weight="700" class="mono">CORE INVARIANT:</text>
+    <text x="140" y="20" fill="#CBD5E1" font-size="12" class="font-sans">
+      WeakSet-tracked SafePass is unforgeable. Fishing zones &amp; trip planner can never execute while a warning is active.
+    </text>
+  </g>
+</svg>

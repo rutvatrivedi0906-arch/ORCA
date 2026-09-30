@@ -1,0 +1,204 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B0D13" />
+      <stop offset="50%" stop-color="#121624" />
+      <stop offset="100%" stop-color="#08090D" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad1" x1="0" y1="0" x2="260" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E2338" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#141824" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="primaryGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+
+    <linearGradient id="safeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A3C12B" />
+      <stop offset="100%" stop-color="#E3F163" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+
+    <filter id="glowBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="80" result="blur" />
+    </filter>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", "Courier New", monospace; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="520" rx="20" fill="url(#bgGrad)" />
+
+  <!-- Ambient Glowing Orbs -->
+  <circle cx="200" cy="100" r="140" fill="#4F46E5" opacity="0.25" filter="url(#glowBlur)" />
+  <circle cx="980" cy="180" r="160" fill="#C4BBF0" opacity="0.18" filter="url(#glowBlur)" />
+  <circle cx="600" cy="460" r="150" fill="#E3F163" opacity="0.12" filter="url(#glowBlur)" />
+
+  <!-- Decorative Subtle Grid Lines -->
+  <g opacity="0.08" stroke="#FFFFFF" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="520" />
+    <line x1="300" y1="0" x2="300" y2="520" />
+    <line x1="500" y1="0" x2="500" y2="520" />
+    <line x1="700" y1="0" x2="700" y2="520" />
+    <line x1="900" y1="0" x2="900" y2="520" />
+    <line x1="1100" y1="0" x2="1100" y2="520" />
+    <line x1="0" y1="130" x2="1200" y2="130" />
+    <line x1="0" y1="260" x2="1200" y2="260" />
+    <line x1="0" y1="390" x2="1200" y2="390" />
+  </g>
+
+  <!-- Header Banner Area -->
+  <g transform="translate(60, 48)">
+    <!-- Pill Badge -->
+    <rect x="0" y="0" width="220" height="32" rx="16" fill="#1E2338" stroke="#4F46E5" stroke-width="1.5" />
+    <circle cx="16" cy="16" r="5" fill="#E3F163" />
+    <text x="30" y="21" fill="#E3F163" font-size="12" font-weight="700" class="font-sans" letter-spacing="1">100% OFFLINE COPILOT</text>
+
+    <!-- Main Title -->
+    <text x="0" y="74" fill="#FFFFFF" font-size="34" font-weight="800" class="font-sans" letter-spacing="-0.5">
+      Autonomous Marine Safety &amp; Tactical Guidance
+    </text>
+    <text x="0" y="104" fill="#94A3B8" font-size="16" font-weight="400" class="font-sans">
+      Deterministic Safety Gate · On-Device Voice AI · 9 Coastal Languages · Zero Cloud Dependency at Sea
+    </text>
+  </g>
+
+  <!-- 4 Feature Cards Layout -->
+  <!-- CARD 1: Voice Intent & STT -->
+  <g transform="translate(60, 180)" filter="url(#cardShadow)">
+    <rect width="250" height="280" rx="16" fill="url(#cardGrad1)" stroke="#312E81" stroke-width="1.5" />
+    
+    <!-- Top icon pill -->
+    <rect x="20" y="20" width="40" height="40" rx="10" fill="#4F46E5" fill-opacity="0.2" stroke="#6366F1" stroke-width="1" />
+    <text x="32" y="46" font-size="18">🎙️</text>
+    
+    <text x="70" y="38" fill="#F8FAFC" font-size="15" font-weight="700" class="font-sans">Voice Copilot</text>
+    <text x="70" y="54" fill="#94A3B8" font-size="12" class="font-sans">whisper.rn · Offline</text>
+
+    <!-- Waveform Graphic -->
+    <rect x="20" y="80" width="210" height="60" rx="10" fill="#0F172A" />
+    <g transform="translate(30, 110)">
+      <line x1="0" y1="-8" x2="0" y2="8" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="12" y1="-16" x2="12" y2="16" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="24" y1="-22" x2="24" y2="22" stroke="#6366F1" stroke-width="3" stroke-linecap="round" />
+      <line x1="36" y1="-12" x2="36" y2="12" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="48" y1="-26" x2="48" y2="26" stroke="#A3C12B" stroke-width="3" stroke-linecap="round" />
+      <line x1="60" y1="-18" x2="60" y2="18" stroke="#E3F163" stroke-width="3" stroke-linecap="round" />
+      <line x1="72" y1="-28" x2="72" y2="28" stroke="#E3F163" stroke-width="3" stroke-linecap="round" />
+      <line x1="84" y1="-14" x2="84" y2="14" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="96" y1="-20" x2="96" y2="20" stroke="#6366F1" stroke-width="3" stroke-linecap="round" />
+      <line x1="108" y1="-8" x2="108" y2="8" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="120" y1="-24" x2="120" y2="24" stroke="#6366F1" stroke-width="3" stroke-linecap="round" />
+      <line x1="132" y1="-15" x2="132" y2="15" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="144" y1="-22" x2="144" y2="22" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="156" y1="-10" x2="156" y2="10" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+      <line x1="168" y1="-18" x2="168" y2="18" stroke="#6366F1" stroke-width="3" stroke-linecap="round" />
+      <line x1="180" y1="-6" x2="180" y2="6" stroke="#818CF8" stroke-width="3" stroke-linecap="round" />
+    </g>
+
+    <!-- Query quote -->
+    <text x="20" y="165" fill="#E2E8F0" font-size="13" font-weight="600" class="font-sans">"இன்று போகலாமா?"</text>
+    <text x="20" y="185" fill="#94A3B8" font-size="12" class="font-sans">"Can I go to sea today?"</text>
+
+    <!-- Badge Tag -->
+    <rect x="20" y="212" width="210" height="42" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1" />
+    <text x="32" y="238" fill="#C4BBF0" font-size="11" font-weight="600" class="font-sans">9 Coastal Languages + Code Mixing</text>
+  </g>
+
+  <!-- CARD 2: The Safety Gate (Fails Closed) -->
+  <g transform="translate(345, 180)" filter="url(#cardShadow)">
+    <rect width="250" height="280" rx="16" fill="url(#cardGrad1)" stroke="#059669" stroke-width="1.5" />
+    
+    <rect x="20" y="20" width="40" height="40" rx="10" fill="#059669" fill-opacity="0.2" stroke="#10B981" stroke-width="1" />
+    <text x="32" y="46" font-size="18">🛡️</text>
+    
+    <text x="70" y="38" fill="#F8FAFC" font-size="15" font-weight="700" class="font-sans">Safety Gate</text>
+    <text x="70" y="54" fill="#34D399" font-size="12" class="font-sans">Fails-Closed Engine</text>
+
+    <!-- Gate Status Display -->
+    <rect x="20" y="80" width="210" height="60" rx="10" fill="#064E3B" fill-opacity="0.3" stroke="#059669" stroke-width="1" />
+    <circle cx="38" cy="110" r="7" fill="#10B981" />
+    <text x="54" y="106" fill="#A7F3D0" font-size="13" font-weight="700" class="font-sans">STATUS: SAFE</text>
+    <text x="54" y="122" fill="#6EE7B7" font-size="11" class="font-sans">Waves: 1.2m · Wind: 22 km/h</text>
+
+    <!-- Metrics List -->
+    <g transform="translate(20, 160)" font-size="12" class="font-sans">
+      <text x="0" y="0" fill="#CBD5E1">✓ 0 Active Cyclone Warnings</text>
+      <text x="0" y="22" fill="#CBD5E1">✓ Data Freshness: 1.4h ≤ 12h</text>
+      <text x="0" y="44" fill="#CBD5E1">✓ INCOIS / IMD Advisory Clear</text>
+    </g>
+
+    <!-- SafePass Chip -->
+    <rect x="20" y="224" width="210" height="32" rx="8" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="1" />
+    <text x="32" y="245" fill="#34D399" font-size="11" font-weight="700" class="mono">SafePass #7B2A MINTED (30m)</text>
+  </g>
+
+  <!-- CARD 3: Tactical Trip Planner & PFZ -->
+  <g transform="translate(630, 180)" filter="url(#cardShadow)">
+    <rect width="250" height="280" rx="16" fill="url(#cardGrad1)" stroke="#2563EB" stroke-width="1.5" />
+    
+    <rect x="20" y="20" width="40" height="40" rx="10" fill="#2563EB" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1" />
+    <text x="32" y="46" font-size="18">🧭</text>
+    
+    <text x="70" y="38" fill="#F8FAFC" font-size="15" font-weight="700" class="font-sans">Trip Planner</text>
+    <text x="70" y="54" fill="#60A5FA" font-size="12" class="font-sans">PFZ + Diesel Estimator</text>
+
+    <!-- Zone Target -->
+    <rect x="20" y="80" width="210" height="60" rx="10" fill="#1E3A8A" fill-opacity="0.3" stroke="#2563EB" stroke-width="1" />
+    <text x="32" y="104" fill="#93C5FD" font-size="12" font-weight="700" class="font-sans">ZONE: NAGAPATTINAM SE-2</text>
+    <text x="32" y="122" fill="#DBEAFE" font-size="14" font-weight="800" class="font-sans">18 km SE · Bearing 142°</text>
+
+    <!-- Stats -->
+    <g transform="translate(20, 160)" font-size="12" class="font-sans">
+      <text x="0" y="0" fill="#CBD5E1">⛽ Est. Diesel: <tspan fill="#F8FAFC" font-weight="700">~24 Litres</tspan></text>
+      <text x="0" y="22" fill="#CBD5E1">⏰ Return Window: <tspan fill="#F8FAFC" font-weight="700">4:00 PM</tspan></text>
+      <text x="0" y="44" fill="#CBD5E1">🐟 Target Catch: <tspan fill="#60A5FA" font-weight="700">Tuna / Mackerel</tspan></text>
+    </g>
+
+    <!-- Lock indicator -->
+    <rect x="20" y="224" width="210" height="32" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1" />
+    <text x="32" y="245" fill="#94A3B8" font-size="11" font-weight="600" class="font-sans">🔒 Hard-locked without SafePass</text>
+  </g>
+
+  <!-- CARD 4: IMBL & Emergency SOS -->
+  <g transform="translate(915, 180)" filter="url(#cardShadow)">
+    <rect width="225" height="280" rx="16" fill="url(#cardGrad1)" stroke="#DC2626" stroke-width="1.5" />
+    
+    <rect x="20" y="20" width="40" height="40" rx="10" fill="#DC2626" fill-opacity="0.2" stroke="#EF4444" stroke-width="1" />
+    <text x="32" y="46" font-size="18">🆘</text>
+    
+    <text x="70" y="38" fill="#F8FAFC" font-size="15" font-weight="700" class="font-sans">SOS &amp; Border</text>
+    <text x="70" y="54" fill="#F87171" font-size="12" class="font-sans">IMBL Geo-Fence Guard</text>
+
+    <!-- Border Status Box -->
+    <rect x="20" y="80" width="185" height="60" rx="10" fill="#7F1D1D" fill-opacity="0.3" stroke="#DC2626" stroke-width="1" />
+    <text x="32" y="104" fill="#FCA5A5" font-size="11" font-weight="700" class="font-sans">IMBL DISTANCE: 14.2 KM</text>
+    <text x="32" y="123" fill="#4ADE80" font-size="13" font-weight="800" class="font-sans">🟢 CLEAR (Zone A)</text>
+
+    <!-- Capabilities -->
+    <g transform="translate(20, 160)" font-size="12" class="font-sans">
+      <text x="0" y="0" fill="#CBD5E1">🚨 Siren at ≤ 5 km border</text>
+      <text x="0" y="22" fill="#CBD5E1">📍 6-Hour GPS Trail Queued</text>
+      <text x="0" y="44" fill="#CBD5E1">📡 Offline SMS Auto-relay</text>
+    </g>
+
+    <!-- SOS Button Preview -->
+    <rect x="20" y="224" width="185" height="32" rx="8" fill="#EF4444" fill-opacity="0.25" stroke="#EF4444" stroke-width="1" />
+    <text x="32" y="245" fill="#FECACA" font-size="11" font-weight="700" class="font-sans">🆘 SOS: 10s Cancel Window</text>
+  </g>
+</svg>
