@@ -1,0 +1,117 @@
+<svg width="540" height="140" viewBox="0 0 540 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient with 3D Depth -->
+    <linearGradient id="ytBg" x1="0" y1="0" x2="540" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#241418" />
+      <stop offset="50%" stop-color="#180F12" />
+      <stop offset="100%" stop-color="#0E080A" />
+    </linearGradient>
+
+    <!-- 3D Border Gradient -->
+    <linearGradient id="ytBorder" x1="0" y1="0" x2="540" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="40%" stop-color="#DC2626" />
+      <stop offset="80%" stop-color="#F87171" />
+      <stop offset="100%" stop-color="#FDE047" />
+    </linearGradient>
+
+    <!-- 3D Button Gradient -->
+    <linearGradient id="ytBtnGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+
+    <!-- Shimmer Gradient -->
+    <linearGradient id="ytShimmer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- 3D Drop Shadows -->
+    <filter id="ytCard3D" x="-10%" y="-10%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#DC2626" flood-opacity="0.35" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+    <filter id="ytBtnShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#DC2626" flood-opacity="0.5" />
+    </filter>
+    <filter id="glowRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#EF4444" flood-opacity="0.8" />
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes floatCardYt {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+    @keyframes pulseGlowYt {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+    @keyframes shimmerMoveYt {
+      0% { transform: translateX(-150px); }
+      100% { transform: translateX(550px); }
+    }
+    .floating-yt { animation: floatCardYt 4s ease-in-out infinite 0.5s; }
+    .pulse-dot-yt { animation: pulseGlowYt 2s infinite ease-in-out; transform-origin: 32px 30px; }
+    .shimmer-bar-yt { animation: shimmerMoveYt 3.5s infinite linear 0.6s; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", monospace; }
+  </style>
+
+  <g class="floating-yt">
+    <!-- Main 3D Card Body -->
+    <rect x="6" y="6" width="528" height="126" rx="20" fill="url(#ytBg)" stroke="url(#ytBorder)" stroke-width="2" filter="url(#ytCard3D)" />
+
+    <!-- Isometric Top Specular Highlight (Simulating 3D Glass) -->
+    <path d="M 8 26 C 8 16, 16 8, 26 8 L 514 8 C 524 8, 532 16, 532 26 L 532 40 C 350 45, 180 50, 8 40 Z" fill="#FFFFFF" fill-opacity="0.04" />
+
+    <!-- Moving Shimmer Highlight -->
+    <rect class="shimmer-bar-yt" y="6" width="120" height="126" fill="url(#ytShimmer)" opacity="0.3" transform="skewX(-20)" />
+
+    <!-- 3D YouTube Floating Icon Pill -->
+    <g transform="translate(24, 26)">
+      <!-- Outer 3D Glow Box -->
+      <rect x="0" y="0" width="88" height="88" rx="18" fill="#351217" stroke="#DC2626" stroke-width="1.5" />
+      <rect x="4" y="4" width="80" height="80" rx="14" fill="#200A0E" />
+
+      <!-- YouTube 3D Screen Box -->
+      <rect x="14" y="24" width="60" height="40" rx="12" fill="#FF0000" />
+      <!-- Bevel highlight -->
+      <path d="M 16 32 C 16 26 22 25 30 25 L 58 25 C 66 25 72 26 72 32 Z" fill="#FFFFFF" fill-opacity="0.25" />
+      <!-- 3D Play Triangle -->
+      <polygon points="38,34 52,44 38,54" fill="#FFFFFF" />
+    </g>
+
+    <!-- Text Information -->
+    <g transform="translate(130, 24)">
+      <!-- Top Pill Status -->
+      <g transform="translate(0, 4)">
+        <rect x="0" y="0" width="170" height="22" rx="11" fill="#371418" stroke="#991B1B" stroke-width="1" />
+        <circle class="pulse-dot-yt" cx="12" cy="11" r="4" fill="#EF4444" filter="url(#glowRed)" />
+        <text x="24" y="15" fill="#FCA5A5" font-size="10.5" font-weight="800" class="mono" letter-spacing="0.5">YOUTUBE VIDEO DEMO</text>
+      </g>
+
+      <!-- Main Headline -->
+      <text x="0" y="52" fill="#FFFFFF" font-size="20" font-weight="900" class="font-sans" letter-spacing="-0.3">
+        Watch Product Demo
+      </text>
+
+      <!-- Subtitle -->
+      <text x="0" y="74" fill="#94A3B8" font-size="12" class="font-sans">
+        Voice Copilot · Safety Gate &amp; SOS in Action
+      </text>
+
+      <!-- YouTube Action 3D Button -->
+      <g transform="translate(260, 40)" filter="url(#ytBtnShadow)">
+        <rect x="0" y="0" width="130" height="38" rx="10" fill="url(#ytBtnGrad)" stroke="#F87171" stroke-width="1.5" />
+        <!-- 3D Bevel bottom line -->
+        <line x1="2" y1="36" x2="128" y2="36" stroke="#7F1D1D" stroke-width="2" />
+        <text x="22" y="24" fill="#FFFFFF" font-size="12.5" font-weight="800" class="font-sans">PLAY VIDEO</text>
+        <polygon points="106,15 114,20 106,25" fill="#FFFFFF" />
+      </g>
+    </g>
+  </g>
+</svg>

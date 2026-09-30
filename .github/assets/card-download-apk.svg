@@ -1,0 +1,130 @@
+<svg width="540" height="140" viewBox="0 0 540 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient with 3D Depth -->
+    <linearGradient id="apkBg" x1="0" y1="0" x2="540" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#181B2A" />
+      <stop offset="50%" stop-color="#111422" />
+      <stop offset="100%" stop-color="#0A0D16" />
+    </linearGradient>
+
+    <!-- 3D Border Gradient -->
+    <linearGradient id="apkBorder" x1="0" y1="0" x2="540" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="35%" stop-color="#4F46E5" />
+      <stop offset="70%" stop-color="#C4BBF0" />
+      <stop offset="100%" stop-color="#E3F163" />
+    </linearGradient>
+
+    <!-- 3D Button Gradient -->
+    <linearGradient id="btnGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#3730A3" />
+    </linearGradient>
+
+    <!-- Shimmer Gradient -->
+    <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- 3D Drop Shadows -->
+    <filter id="card3D" x="-10%" y="-10%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#4F46E5" flood-opacity="0.35" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+    <filter id="btnShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#4F46E5" flood-opacity="0.5" />
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#E3F163" flood-opacity="0.8" />
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+    @keyframes shimmerMove {
+      0% { transform: translateX(-150px); }
+      100% { transform: translateX(550px); }
+    }
+    .floating { animation: floatCard 4s ease-in-out infinite; }
+    .pulse-dot { animation: pulseGlow 2s infinite ease-in-out; transform-origin: 32px 30px; }
+    .shimmer-bar { animation: shimmerMove 3.5s infinite linear; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", monospace; }
+  </style>
+
+  <g class="floating">
+    <!-- Main 3D Card Body -->
+    <rect x="6" y="6" width="528" height="126" rx="20" fill="url(#apkBg)" stroke="url(#apkBorder)" stroke-width="2" filter="url(#card3D)" />
+
+    <!-- Isometric Top Specular Highlight (Simulating 3D Glass) -->
+    <path d="M 8 26 C 8 16, 16 8, 26 8 L 514 8 C 524 8, 532 16, 532 26 L 532 40 C 350 45, 180 50, 8 40 Z" fill="#FFFFFF" fill-opacity="0.04" />
+
+    <!-- Moving Shimmer Highlight -->
+    <g clip-path="url(#cardClip)">
+      <rect class="shimmer-bar" y="6" width="120" height="126" fill="url(#shimmer)" opacity="0.3" transform="skewX(-20)" />
+    </g>
+
+    <!-- 3D Android APK Floating Icon Pill -->
+    <g transform="translate(24, 26)">
+      <!-- Outer 3D Glow Box -->
+      <rect x="0" y="0" width="88" height="88" rx="18" fill="#1E2338" stroke="#4F46E5" stroke-width="1.5" />
+      <rect x="4" y="4" width="80" height="80" rx="14" fill="#141828" />
+
+      <!-- Android Bugdroid 3D Visual -->
+      <!-- Head -->
+      <path d="M 30 46 A 14 14 0 0 1 58 46 Z" fill="#E3F163" />
+      <!-- Eyes -->
+      <circle cx="37" cy="40" r="1.8" fill="#141828" />
+      <circle cx="51" cy="40" r="1.8" fill="#141828" />
+      <!-- Antennas -->
+      <line x1="33" y1="31" x2="36" y2="35" stroke="#E3F163" stroke-width="2" stroke-linecap="round" />
+      <line x1="55" y1="31" x2="52" y2="35" stroke="#E3F163" stroke-width="2" stroke-linecap="round" />
+      <!-- Body -->
+      <rect x="30" y="49" width="28" height="20" rx="4" fill="#E3F163" />
+      <!-- Arms -->
+      <rect x="23" y="49" width="4.5" height="15" rx="2.25" fill="#E3F163" />
+      <rect x="60.5" y="49" width="4.5" height="15" rx="2.25" fill="#E3F163" />
+      <!-- Legs -->
+      <rect x="35" y="70" width="5" height="9" rx="2.5" fill="#E3F163" />
+      <rect x="48" y="70" width="5" height="9" rx="2.5" fill="#E3F163" />
+    </g>
+
+    <!-- Text Information -->
+    <g transform="translate(130, 24)">
+      <!-- Top Pill Status -->
+      <g transform="translate(0, 4)">
+        <rect x="0" y="0" width="165" height="22" rx="11" fill="#1E2838" stroke="#3730A3" stroke-width="1" />
+        <circle class="pulse-dot" cx="12" cy="11" r="4" fill="#E3F163" filter="url(#glowGreen)" />
+        <text x="24" y="15" fill="#E3F163" font-size="10.5" font-weight="800" class="mono" letter-spacing="0.5">OFFLINE READY · APK</text>
+      </g>
+
+      <!-- Main Headline -->
+      <text x="0" y="52" fill="#FFFFFF" font-size="20" font-weight="900" class="font-sans" letter-spacing="-0.3">
+        Download APK File
+      </text>
+
+      <!-- Subtitle -->
+      <text x="0" y="74" fill="#94A3B8" font-size="12" class="font-sans">
+        Voice Copilot · Safety Gate · 9 Languages · v1.0.1
+      </text>
+
+      <!-- Download Action 3D Button -->
+      <g transform="translate(260, 40)" filter="url(#btnShadow)">
+        <rect x="0" y="0" width="130" height="38" rx="10" fill="url(#btnGrad)" stroke="#6366F1" stroke-width="1.5" />
+        <!-- 3D Bevel bottom line -->
+        <line x1="2" y1="36" x2="128" y2="36" stroke="#312E81" stroke-width="2" />
+        <text x="20" y="24" fill="#FFFFFF" font-size="12.5" font-weight="800" class="font-sans">INSTALL NOW</text>
+        <path d="M 104 15 L 110 19 L 104 23" stroke="#E3F163" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+    </g>
+  </g>
+</svg>

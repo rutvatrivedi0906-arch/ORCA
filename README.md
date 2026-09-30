@@ -1,5 +1,19 @@
 <div align="center">
 
+<!-- 🚀 3D ANIMATED ACTION CARDS (FLOATING & GLOWING) -->
+<a href="https://orca-app-gold.vercel.app/" target="_blank">
+  <img src=".github/assets/card-download-apk.svg" alt="Download Apk file : https://orca-app-gold.vercel.app/" width="49%" />
+</a>
+<a href="https://youtu.be/AvTgKgtaXi4?si=TJEleu4jrHjlt5Ll" target="_blank">
+  <img src=".github/assets/card-youtube-demo.svg" alt="Youtube Link = https://youtu.be/AvTgKgtaXi4?si=TJEleu4jrHjlt5Ll" width="49%" />
+</a>
+
+<br/>
+
+> **📲 Download Apk file : [https://orca-app-gold.vercel.app/](https://orca-app-gold.vercel.app/) &nbsp;&nbsp;|&nbsp;&nbsp; ▶️ Youtube Link = [https://youtu.be/AvTgKgtaXi4?si=TJEleu4jrHjlt5Ll](https://youtu.be/AvTgKgtaXi4?si=TJEleu4jrHjlt5Ll)**
+
+<br/>
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1B1C18,55:4F46E5,100:C4BBF0&height=250&section=header&text=ORCA&fontSize=96&fontColor=ffffff&fontAlignY=38&desc=Voice-first%20%C2%B7%20Offline%20Marine%20Safety%20Copilot&descSize=22&descAlignY=60&animation=fadeIn" width="100%" alt="ORCA — Voice-first, Offline Marine Safety Copilot" />
 
 <br/>
@@ -28,7 +42,7 @@
 
 > **🌊 "Jaan pehle, kamai baad me." A voice-first, offline copilot that tells a fisherman whether it is safe to go to sea, and where the fish are, in his own language. When a warning is active, the fishing advice cannot run at all.**
 
-[🌐 **LIVE WEBSITE**](https://orca-app-gold.vercel.app) &nbsp;•&nbsp; [📲 **DOWNLOAD APK**](https://orca-app-gold.vercel.app/ORCA-1.0.1.apk) &nbsp;•&nbsp; [⚡ **UNIQUE FEATURES**](#-unique-features--competitive-advantage) &nbsp;•&nbsp; [👥 **STAKEHOLDERS**](#-stakeholder-matrix--ecosystem-impact) &nbsp;•&nbsp; [🏗️ **ARCHITECTURE**](#-system-architecture) &nbsp;•&nbsp; [🧰 **TECH STACK**](#-tech-stack--engineering-matrix) &nbsp;•&nbsp; [🚀 **QUICKSTART**](#-quickstart)
+[📲 **DOWNLOAD APK**](https://orca-app-gold.vercel.app/) &nbsp;•&nbsp; [▶️ **YOUTUBE DEMO**](https://youtu.be/AvTgKgtaXi4?si=TJEleu4jrHjlt5Ll) &nbsp;•&nbsp; [🌐 **LIVE WEBSITE**](https://orca-app-gold.vercel.app) &nbsp;•&nbsp; [⚡ **UNIQUE FEATURES**](#-unique-features--competitive-advantage) &nbsp;•&nbsp; [👥 **STAKEHOLDERS**](#-stakeholder-matrix--ecosystem-impact) &nbsp;•&nbsp; [🏗️ **ARCHITECTURE**](#-system-architecture) &nbsp;•&nbsp; [🧰 **TECH STACK**](#-tech-stack--engineering-matrix) &nbsp;•&nbsp; [🚀 **QUICKSTART**](#-quickstart)
 
 <br/>
 
