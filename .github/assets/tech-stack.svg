@@ -1,0 +1,234 @@
+<svg width="1100" height="480" viewBox="0 0 1100 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="techBg" x1="0" y1="0" x2="1100" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#090B10" />
+      <stop offset="50%" stop-color="#111522" />
+      <stop offset="100%" stop-color="#08090E" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardBg1" x1="0" y1="0" x2="225" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#191E30" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#10131E" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="tsGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3178C6" />
+      <stop offset="100%" stop-color="#235A97" />
+    </linearGradient>
+
+    <linearGradient id="rnGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#61DAFB" />
+      <stop offset="100%" stop-color="#0088CC" />
+    </linearGradient>
+
+    <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#339933" />
+      <stop offset="100%" stop-color="#216621" />
+    </linearGradient>
+
+    <linearGradient id="pgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#336791" />
+      <stop offset="100%" stop-color="#4169E1" />
+    </linearGradient>
+
+    <linearGradient id="aiGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F07A5A" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+
+    <filter id="shadowGlow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: "JetBrains Mono", "Courier New", monospace; }
+  </style>
+
+  <!-- Base Canvas -->
+  <rect width="1100" height="480" rx="18" fill="url(#techBg)" stroke="#1F2438" stroke-width="1.5" />
+
+  <!-- Header -->
+  <g transform="translate(50, 40)">
+    <rect x="0" y="0" width="180" height="28" rx="14" fill="#1E2338" stroke="#4F46E5" stroke-width="1" />
+    <circle cx="14" cy="14" r="4.5" fill="#4F46E5" />
+    <text x="26" y="18" fill="#C4BBF0" font-size="11" font-weight="700" class="font-sans" letter-spacing="1">FULL-STACK TECH STACK</text>
+    
+    <text x="0" y="58" fill="#FFFFFF" font-size="26" font-weight="800" class="font-sans">
+      End-to-End Maritime Engineering Architecture
+    </text>
+    <text x="0" y="82" fill="#94A3B8" font-size="14" class="font-sans">
+      Single TypeScript brain shared between edge clients, backend engines, and spatial dispatch command.
+    </text>
+  </g>
+
+  <!-- 5 Architecture Columns -->
+
+  <!-- COLUMN 1: SHARED CORE (@orca/core) -->
+  <g transform="translate(50, 150)" filter="url(#shadowGlow)">
+    <rect width="185" height="290" rx="14" fill="url(#cardBg1)" stroke="#3178C6" stroke-width="1.5" />
+    
+    <!-- Top badge -->
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="url(#tsGrad)" />
+    <text x="25" y="40" fill="#FFFFFF" font-size="16" font-weight="800" class="font-sans">TS</text>
+    <text x="60" y="32" fill="#FFFFFF" font-size="14" font-weight="700" class="font-sans">Shared Core</text>
+    <text x="60" y="47" fill="#60A5FA" font-size="11" class="mono">@orca/core</text>
+
+    <!-- Components List -->
+    <g transform="translate(16, 75)" font-size="12" class="font-sans">
+      <rect x="0" y="0" width="153" height="32" rx="6" fill="#1E2640" />
+      <text x="10" y="20" fill="#93C5FD">🛡️ Safety Gate (5 Rules)</text>
+
+      <rect x="0" y="38" width="153" height="32" rx="6" fill="#1E2640" />
+      <text x="10" y="58" fill="#93C5FD">🔑 SafePass (WeakSet)</text>
+
+      <rect x="0" y="76" width="153" height="32" rx="6" fill="#1E2640" />
+      <text x="10" y="96" fill="#93C5FD">📐 Turf.js GeoEngine</text>
+
+      <rect x="0" y="114" width="153" height="32" rx="6" fill="#1E2640" />
+      <text x="10" y="134" fill="#93C5FD">🗣️ 9-Lang Intent Match</text>
+
+      <rect x="0" y="152" width="153" height="32" rx="6" fill="#1E2640" />
+      <text x="10" y="172" fill="#93C5FD">🧭 Trip / Diesel Planner</text>
+    </g>
+
+    <!-- Tag -->
+    <rect x="16" y="250" width="153" height="24" rx="5" fill="#1E293B" />
+    <text x="30" y="266" fill="#94A3B8" font-size="10" font-weight="600" class="mono">ZERO DEPENDENCY</text>
+  </g>
+
+  <!-- COLUMN 2: MOBILE EDGE (@orca/mobile) -->
+  <g transform="translate(252, 150)" filter="url(#shadowGlow)">
+    <rect width="185" height="290" rx="14" fill="url(#cardBg1)" stroke="#4F46E5" stroke-width="1.5" />
+    
+    <!-- Top badge -->
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#4F46E5" />
+    <text x="24" y="40" fill="#FFFFFF" font-size="18">📱</text>
+    <text x="60" y="32" fill="#FFFFFF" font-size="14" font-weight="700" class="font-sans">Mobile Edge</text>
+    <text x="60" y="47" fill="#A5B4FC" font-size="11" class="mono">Expo 57 / RN 86</text>
+
+    <!-- Components List -->
+    <g transform="translate(16, 75)" font-size="12" class="font-sans">
+      <rect x="0" y="0" width="153" height="32" rx="6" fill="#1E2238" />
+      <text x="10" y="20" fill="#C4BBF0">🎙️ whisper.rn (Offline)</text>
+
+      <rect x="0" y="38" width="153" height="32" rx="6" fill="#1E2238" />
+      <text x="10" y="58" fill="#C4BBF0">🗄️ expo-sqlite (Cache)</text>
+
+      <rect x="0" y="76" width="153" height="32" rx="6" fill="#1E2238" />
+      <text x="10" y="96" fill="#C4BBF0">📍 Background GPS 5m</text>
+
+      <rect x="0" y="114" width="153" height="32" rx="6" fill="#1E2238" />
+      <text x="10" y="134" fill="#C4BBF0">🚨 IMBL Geo-Siren</text>
+
+      <rect x="0" y="152" width="153" height="32" rx="6" fill="#1E2238" />
+      <text x="10" y="172" fill="#C4BBF0">📬 Offline SOS Queue</text>
+    </g>
+
+    <!-- Tag -->
+    <rect x="16" y="250" width="153" height="24" rx="5" fill="#312E81" />
+    <text x="32" y="266" fill="#E0E7FF" font-size="10" font-weight="700" class="mono">100% OFFLINE READY</text>
+  </g>
+
+  <!-- COLUMN 3: BACKEND API (@orca/server) -->
+  <g transform="translate(454, 150)" filter="url(#shadowGlow)">
+    <rect width="185" height="290" rx="14" fill="url(#cardBg1)" stroke="#339933" stroke-width="1.5" />
+    
+    <!-- Top badge -->
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="url(#nodeGrad)" />
+    <text x="24" y="40" fill="#FFFFFF" font-size="18">🖥️</text>
+    <text x="60" y="32" fill="#FFFFFF" font-size="14" font-weight="700" class="font-sans">API Server</text>
+    <text x="60" y="47" fill="#86EFAC" font-size="11" class="mono">Node · Express 5</text>
+
+    <!-- Components List -->
+    <g transform="translate(16, 75)" font-size="12" class="font-sans">
+      <rect x="0" y="0" width="153" height="32" rx="6" fill="#1A281E" />
+      <text x="10" y="20" fill="#A7F3D0">🛡️ Helmet + Zod Validate</text>
+
+      <rect x="0" y="38" width="153" height="32" rx="6" fill="#1A281E" />
+      <text x="10" y="58" fill="#A7F3D0">⏱️ Hourly node-cron</text>
+
+      <rect x="0" y="76" width="153" height="32" rx="6" fill="#1A281E" />
+      <text x="10" y="96" fill="#A7F3D0">🌊 Open-Meteo Ingest</text>
+
+      <rect x="0" y="114" width="153" height="32" rx="6" fill="#1A281E" />
+      <text x="10" y="134" fill="#A7F3D0">📲 Twilio SMS / OTP</text>
+
+      <rect x="0" y="152" width="153" height="32" rx="6" fill="#1A281E" />
+      <text x="10" y="172" fill="#A7F3D0">🎙️ whisper.cpp Fallback</text>
+    </g>
+
+    <!-- Tag -->
+    <rect x="16" y="250" width="153" height="24" rx="5" fill="#14532D" />
+    <text x="28" y="266" fill="#BBF7D0" font-size="10" font-weight="700" class="mono">HIGH AVAILABILITY</text>
+  </g>
+
+  <!-- COLUMN 4: SPATIAL DATA (PostGIS / PGlite) -->
+  <g transform="translate(656, 150)" filter="url(#shadowGlow)">
+    <rect width="185" height="290" rx="14" fill="url(#cardBg1)" stroke="#4169E1" stroke-width="1.5" />
+    
+    <!-- Top badge -->
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="url(#pgGrad)" />
+    <text x="24" y="40" fill="#FFFFFF" font-size="18">🗄️</text>
+    <text x="60" y="32" fill="#FFFFFF" font-size="14" font-weight="700" class="font-sans">Spatial DB</text>
+    <text x="60" y="47" fill="#93C5FD" font-size="11" class="mono">PostGIS · PGlite</text>
+
+    <!-- Components List -->
+    <g transform="translate(16, 75)" font-size="12" class="font-sans">
+      <rect x="0" y="0" width="153" height="32" rx="6" fill="#1A2438" />
+      <text x="10" y="20" fill="#BFDBFE">🗺️ PostGIS Geometry</text>
+
+      <rect x="0" y="38" width="153" height="32" rx="6" fill="#1A2438" />
+      <text x="10" y="58" fill="#BFDBFE">⚡ PGlite (Zero-config)</text>
+
+      <rect x="0" y="76" width="153" height="32" rx="6" fill="#1A2438" />
+      <text x="10" y="96" fill="#BFDBFE">📍 Breadcrumb GPS Index</text>
+
+      <rect x="0" y="114" width="153" height="32" rx="6" fill="#1A2438" />
+      <text x="10" y="134" fill="#BFDBFE">🐟 PFZ Advisory Polygons</text>
+
+      <rect x="0" y="152" width="153" height="32" rx="6" fill="#1A2438" />
+      <text x="10" y="172" fill="#BFDBFE">📦 Diff Bundles Cache</text>
+    </g>
+
+    <!-- Tag -->
+    <rect x="16" y="250" width="153" height="24" rx="5" fill="#1E3A8A" />
+    <text x="32" y="266" fill="#BFDBFE" font-size="10" font-weight="700" class="mono">POSTGIS EMBEDDED</text>
+  </g>
+
+  <!-- COLUMN 5: COMMAND & SPEECH -->
+  <g transform="translate(858, 150)" filter="url(#shadowGlow)">
+    <rect width="190" height="290" rx="14" fill="url(#cardBg1)" stroke="#F07A5A" stroke-width="1.5" />
+    
+    <!-- Top badge -->
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="url(#aiGrad)" />
+    <text x="24" y="40" fill="#FFFFFF" font-size="18">🗺️</text>
+    <text x="60" y="32" fill="#FFFFFF" font-size="14" font-weight="700" class="font-sans">Command &amp; AI</text>
+    <text x="60" y="47" fill="#FCA5A5" font-size="11" class="mono">React 19 · Vite 8</text>
+
+    <!-- Components List -->
+    <g transform="translate(16, 75)" font-size="12" class="font-sans">
+      <rect x="0" y="0" width="158" height="32" rx="6" fill="#2E1C22" />
+      <text x="10" y="20" fill="#FECDD3">🗺️ Leaflet Live Fleet</text>
+
+      <rect x="0" y="38" width="158" height="32" rx="6" fill="#2E1C22" />
+      <text x="10" y="58" fill="#FECDD3">🚨 SOS Incident Manager</text>
+
+      <rect x="0" y="76" width="158" height="32" rx="6" fill="#2E1C22" />
+      <text x="10" y="96" fill="#FECDD3">📢 9-Lang Broadcast</text>
+
+      <rect x="0" y="114" width="158" height="32" rx="6" fill="#2E1C22" />
+      <text x="10" y="134" fill="#FECDD3">🗣️ AI4Bharat IndicTTS</text>
+
+      <rect x="0" y="152" width="158" height="32" rx="6" fill="#2E1C22" />
+      <text x="10" y="172" fill="#FECDD3">🧪 Vitest (166 Tests)</text>
+    </g>
+
+    <!-- Tag -->
+    <rect x="16" y="250" width="158" height="24" rx="5" fill="#881337" />
+    <text x="28" y="266" fill="#FECDD3" font-size="10" font-weight="700" class="mono">TACTICAL DISPATCH</text>
+  </g>
+</svg>
